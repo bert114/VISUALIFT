@@ -2,26 +2,36 @@ export function cleanText(value = "") {
   return String(value).trim().replace(/\s+/g, " ");
 }
 
-export function buildFinalPrompt(description, userPref) {
+export function buildFinalPrompt(prompt, userPref = {}) {
+  const cleanPrompt = String(prompt || "")
+    .replace(/\s+/g, " ")
+    .trim();
+
   const parts = [];
 
-  parts.push(description);
+  if (cleanPrompt) {
+    parts.push(cleanPrompt);
+  }
 
   if (userPref.imagePurpose) {
-    parts.push(`Purpose: ${userPref.imagePurpose}.`);
+    parts.push(`Create this as a ${formatValue(userPref.imagePurpose)}.`);
   }
 
   if (userPref.background) {
-    parts.push(`Background: ${userPref.background}.`);
+    parts.push(`Use a ${formatValue(userPref.background)} background.`);
   }
 
   if (userPref.color) {
-    parts.push(`Color palette: ${userPref.color}.`);
+    parts.push(`Use a ${formatValue(userPref.color)} color palette.`);
   }
 
   if (userPref.aspectRatio) {
     parts.push(`Aspect ratio: ${userPref.aspectRatio}.`);
   }
 
-  return parts.join("\n");
+  return parts.join(" ");
+}
+
+function formatValue(value) {
+  return String(value).replace(/_/g, " ").trim();
 }
