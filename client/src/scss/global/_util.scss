@@ -1,0 +1,96 @@
+:root {
+  /* Typography */
+  --font-title: "HotelFont", ui-serif, Georgia, serif;
+  --font-body:
+    "HotelFontText", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Arial, sans-serif;
+
+  /* Type scale */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+
+  /* Line heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* Base colors */
+  --bg: #f5f2ed;
+  --surface: #ffffff;
+  --surface-2: #f9f7f3;
+  --surface-3: #f1ece6;
+
+  --ink: #1b1714;
+  --ink-soft: rgba(27, 23, 20, 0.82);
+  --muted: rgba(27, 23, 20, 0.65);
+
+  --line: #e7e2db;
+  --soft-line: rgba(27, 23, 20, 0.08);
+  --strong-line: rgba(27, 23, 20, 0.16);
+
+  /* Brand / actions */
+  --primary: #1b1714;
+  --primary-hover: #0f0d0b;
+  --primary-contrast: #ffffff;
+
+  --danger: #d45757;
+  --danger-hover: #c54a4a;
+  --danger-contrast: #ffffff;
+
+  /* Status */
+  --success-bg: #e6f0e9;
+  --success-ink: #3f664b;
+
+  --inactive-bg: #f5e4e4;
+  --inactive-ink: #aa5555;
+
+  /* Focus / accessibility */
+  --focus-ring: rgba(27, 23, 20, 0.18);
+  --focus-outline: 2px solid rgba(27, 23, 20, 0.28);
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+  /* Layout */
+  --container-sm: 720px;
+  --container-md: 960px;
+  --container-lg: 1200px;
+  --container-xl: 1440px;
+
+  /* Spacing scale */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 32px;
+  --s-8: 40px;
+  --s-9: 48px;
+  --s-10: 64px;
+
+  /* Radius */
+  --r-1: 6px;
+  --r-2: 10px;
+  --r-3: 14px;
+  --r-4: 20px;
+  --r-pill: 999px;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --dur-slow: 260ms;
+
+  /* Table */
+  --cell-x: 14px;
+  --cell-y: 16px;
+  --row-gap: 10px;
+}

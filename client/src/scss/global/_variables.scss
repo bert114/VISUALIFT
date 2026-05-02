@@ -1,0 +1,104 @@
+:root {
+  /* Colors */
+  --color-primary: #0066ff;
+  --color-accent: #00ffff;
+  --color-bg: #1e1e1e;
+  // --color-surface: rgba(255, 255, 255, 0.06);
+
+  --bg-dark: oklch(0.1 0.025 264);
+  --bg: oklch(0.15 0.025 264);
+  --bg-light: oklch(0.2 0.025 264);
+
+  --color-surface: var(--bg);
+
+  --color-surface-hover: rgba(0, 255, 255, 0.1);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-active: #00ffff;
+
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.68);
+  --color-text-soft: rgba(255, 255, 255, 0.48);
+
+  /* Typography */
+  --font-heading: "DejaVu Sans bold", Arial, sans-serif;
+  --font-body: "DejaVu Sans", Arial, sans-serif;
+
+  --font-size-xs: 10px;
+  --font-size-sm: 13px;
+  --font-size-md: 15px;
+  --font-size-lg: 20px;
+  --font-size-xl: 28px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.6;
+
+  --shadow-s:
+    inset 0 1px 2px #ffffff30, 0 1px 2px #00000030, 0 2px 4px #00000015;
+  --shadow-m:
+    inset 0 1px 2px #ffffff50, 0 2px 4px #00000030, 0 4px 8px #00000015;
+  --shadow-l:
+    inset 0 1px 2px #ffffff70, 0 4px 6px #00000030, 0 6px 10px #00000015;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+  --radius-pill: 999px;
+
+  /* Shadows / Glow */
+  --shadow-card: 0 24px 60px rgba(0, 0, 0, 0.35);
+  --shadow-active: 0 0 22px rgba(0, 255, 255, 0.22);
+  --glow-cyan: 0 0 18px rgba(0, 255, 255, 0.28);
+
+  /* Borders */
+  --border-subtle: 1px solid var(--color-border);
+  --border-active: 1px solid var(--color-border-active);
+
+  /* Motion */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+
+  --shadow-inner:
+    box-shadow: 0 0 0 6px rgba(15, 17, 21, 0.78),
+    0 0 26px rgba(0, 255, 255, 0.1);
+}
+
+@font-face {
+  font-family: "DejaVu Sans";
+  src: url("../../assets/fonts/DejaVuSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DejaVu Sans bold";
+  src: url("../../assets/fonts/DejaVuSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--color-text);
+}
