@@ -6,6 +6,7 @@ import visionRoute from "./src/routes/visionRoute.js";
 import modelRoute from "./src/routes/modelRoute.js";
 import uploadRoute from "./src/routes/uploadRoute.js";
 import connectDB from "./src/config/db.js";
+import buildRoute from "./src/routes/buildRoute.js";
 
 dotenv.config();
 
@@ -37,6 +38,7 @@ app.use("/api/images", imgRoute);
 app.use("/api/user", uploadRoute);
 app.use("/api/vision", visionRoute);
 app.use("/api/models", modelRoute);
+app.use("/api/prompt", buildRoute);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

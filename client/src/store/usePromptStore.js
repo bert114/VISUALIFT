@@ -1,11 +1,18 @@
 import { create } from "zustand";
+import useImageStore1 from "./useImageStorecopy.js";
+import { describeImgg } from "../helper/util.js";
 
 const usePromptStore = create((set) => ({
   prompt: "",
   isUploaded: false,
   setPrompt: (newPrompt) => set({ prompt: newPrompt }),
   setIsUploaded: (status) => set({ isUploaded: status }),
-  handleGenerate: () => {},
+  handleGenerate: async () => {
+    console.log("ns click na");
+    const prompt = await describeImgg();
+
+    set({ prompt });
+  },
 }));
 
 export const selectedSettings = create((set) => ({

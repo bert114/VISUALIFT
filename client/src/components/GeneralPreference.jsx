@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import usePromptStore, { selectedSettings } from "../store/usePromptStore.js";
+import { buildFinalPrompt } from "../../../backend/src/utils/promptBuilder.js";
+import { buildPromp } from "../helper/util.js";
 
 const purposes = [
   "All",
@@ -59,6 +61,8 @@ const ratios = [
 function GenerationPreferences() {
   const [selectedModel, setSelectedModel] = useState("Realistic");
   const { handleGenerate, isUploaded } = usePromptStore();
+  const [userPreference, setUserPreference] = useState({});
+  const { prompt } = usePromptStore();
   const {
     imagePurpose,
     model,
@@ -78,7 +82,7 @@ function GenerationPreferences() {
   } = selectedSettings();
 
   useEffect(() => {
-    console.log("Updated settings:", {
+    setUserPreference({
       imagePurpose,
       model,
       background,
@@ -86,7 +90,24 @@ function GenerationPreferences() {
       aspectRatio,
       numberOfImages,
     });
-  }, [imagePurpose, model, background, color, aspectRatio, numberOfImages]);
+
+    console.log("user pref", userPreference);
+    console.log("image reference", prompt);
+  }, [
+    imagePurpose,
+    model,
+    background,
+    color,
+    aspectRatio,
+    numberOfImages,
+    prompt,
+  ]);
+
+  useEffect(() => {
+    if (prompt && userPreference) {
+      buildPromp(prompt, userPreference);
+    }
+  }, [prompt, userPreference]);
 
   return (
     <section className="generation-preferences">
