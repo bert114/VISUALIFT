@@ -65,4 +65,6 @@ export const buildPromp = async (prompt, userPref) => {
     prompt,
     userPref,
   });
+
+  console.log(res.data.data);
 };
