@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import PreferenceBlock from "./PreferenceBlock.jsx";
 import { models } from "../../static/constantfile.js";
 import { usePreferenceActions } from "../../hooks/usePreferenceAction.jsx";
+import { selectedSettings } from "../../store/usePromptStore.js";
 
 function StyleModel() {
   const action = usePreferenceActions();
   const [selectedModel, setSelectedModel] = useState("Realistic");
+  const { setUserPref } = selectedSettings();
 
   return (
     <PreferenceBlock title="Style / Model">
@@ -15,7 +17,7 @@ function StyleModel() {
             key={item.title}
             type="button"
             onClick={() => {
-              action.setModel(item.title);
+              setUserPref("model", item.title);
               setSelectedModel(item.title);
             }}
             className={`model-card ${

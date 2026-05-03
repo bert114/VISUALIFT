@@ -5,20 +5,13 @@ import OptionCard from "./OptionCard.jsx";
 import { selectedSettings } from "../../store/usePromptStore.js";
 
 function Background() {
-  const {
-    setImagePurpose,
-    setModel,
-    setBackground,
-    setColor,
-    setAspectRatio,
-    setNumberOfImages,
-  } = selectedSettings();
+  const { setUserPref } = selectedSettings();
 
   return (
     <PreferenceBlock title="Background">
       <div
         className="card-grid card-grid--three"
-        onClick={(e) => setBackground(e.target.innerText)}
+        onClick={(e) => setUserPref("background", e.target.innerText)}
       >
         {backgrounds.map((item, index) => (
           <OptionCard

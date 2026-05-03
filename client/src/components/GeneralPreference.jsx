@@ -47,6 +47,7 @@ function GenerationPreferences() {
   );
 
   useEffect(() => {
+    return;
     console.log(userPreference);
     if (!prompt) return;
 

@@ -6,20 +6,13 @@ import usePromptStore, {
 } from "../../store/usePromptStore.js";
 
 function ImagePrefPurpose() {
-  const {
-    setImagePurpose,
-    setModel,
-    setBackground,
-    setColor,
-    setAspectRatio,
-    setNumberOfImages,
-  } = selectedSettings();
+  const { setUserPref } = selectedSettings();
 
   return (
     <PreferenceBlock title="Image Purpose">
       <div
         className="chip-list"
-        onClick={(e) => setImagePurpose(e.target.innerText)}
+        onClick={(e) => setUserPref("imagePurpose", e.target.innerText)}
       >
         {purposes.map((item, index) => (
           <button

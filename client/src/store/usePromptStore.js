@@ -5,30 +5,41 @@ import { describeImgg } from "../helper/util.js";
 const usePromptStore = create((set) => ({
   prompt: "",
   isUploaded: false,
+
   setPrompt: (newPrompt) => set({ prompt: newPrompt }),
   setIsUploaded: (status) => set({ isUploaded: status }),
   handleGenerate: async () => {
-    console.log("generating......");
-    const prompt = await describeImgg();
+    const { setUserPref } = selectedSettings.getState();
+    console.log("Describing uploaded image......");
+    const describeImage = await describeImgg();
+    console.log("done describing");
+    setUserPref("describeImage", describeImage);
 
-    set({ prompt });
+    const userPreference = selectedSettings.getState().userPref;
+
+    console.log(userPreference);
   },
 }));
 
 export const selectedSettings = create((set) => ({
-  imagePurpose: "profile_picture",
-  model: "dall-e-3",
-  background: null,
-  color: null,
-  aspectRatio: "1:1",
-  numberOfImages: 1,
+  userPref: {
+    imagePurpose: "All",
+    model: "Realistic",
+    background: "Solid white",
+    color: "#00E5FF",
+    aspectRatio: "1:1",
+    numberOfImages: "auto",
+    describeImage: null,
+  },
 
-  setImagePurpose: (purpose) => set({ imagePurpose: purpose }),
-  setModel: (model) => set({ model }),
-  setBackground: (background) => set({ background }),
-  setColor: (color) => set({ color }),
-  setAspectRatio: (aspectRatio) => set({ aspectRatio }),
-  setNumberOfImages: (number) => set({ numberOfImages: number }),
+  setUserPref: (key, value) => {
+    set((state) => ({
+      userPref: {
+        ...state.userPref,
+        [key]: value,
+      },
+    }));
+  },
 }));
 
 export default usePromptStore;

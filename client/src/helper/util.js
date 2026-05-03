@@ -41,7 +41,6 @@ export function isSelectionValid(selections) {
 }
 
 export async function describeImgg(img) {
-  console.log("ns click na");
   const file = useImageStore1.getState().file;
 
   const formData = new FormData();

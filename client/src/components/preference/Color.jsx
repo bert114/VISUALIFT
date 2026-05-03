@@ -4,14 +4,7 @@ import { colors } from "../../static/constantfile.js";
 import { selectedSettings } from "../../store/usePromptStore.js";
 
 function Color() {
-  const {
-    setImagePurpose,
-    setModel,
-    setBackground,
-    setColor,
-    setAspectRatio,
-    setNumberOfImages,
-  } = selectedSettings();
+  const { setUserPref } = selectedSettings();
 
   return (
     <PreferenceBlock title="Color Preference">
@@ -23,7 +16,7 @@ function Color() {
       <div className="chip-list chip-list--small">
         {colors.map((item) => (
           <button
-            onClick={() => setColor(item)}
+            onClick={() => setUserPref("color", item)}
             key={item}
             type="button"
             className="chip chip--small"
