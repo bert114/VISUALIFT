@@ -15,22 +15,57 @@ function PromptReview() {
   const { load, setLoad } = useLoadStore();
 
   return (
-    <div>
-      <h1>Review & Edit Prompt</h1>
-      <span>You can edit this before generating images</span>
-      <div className="img-prompt">
-        <div className="img-container">
-          <img src={img} alt="generated image" />
+    <section className="prompt-review">
+      <div className="review-shell">
+        <a className="back-link" href="#">
+          ← Back to Upload
+        </a>
+
+        <header className="review-header">
+          <h1>Review Your Prompt</h1>
+          <p>Edit your prompt before generating images.</p>
+        </header>
+
+        <div className="review-grid">
+          <article className="review-card">
+            <h2>Reference Image</h2>
+
+            <div className="image-preview">
+              {img ? (
+                <img src={img} alt="Reference preview" />
+              ) : (
+                "[ IMAGE PREVIEW ]"
+              )}
+            </div>
+          </article>
+
+          <article className="review-card prompt-card">
+            <h2>Prompt</h2>
+
+            <textarea
+              className="prompt-input"
+              defaultValue={
+                generatedPrompt ||
+                `Describe the image style, lighting, composition, details...`
+              }
+            />
+
+            {!generatedPrompt && (
+              <div className="error-box">
+                <strong>⚠ Your prompt is empty or incomplete.</strong>
+                <span>Add more detail to continue.</span>
+              </div>
+            )}
+          </article>
         </div>
-        <textarea
-          value={generatedPrompt ?? ""}
-          onChange={(e) => setGeneratedPrompt(e.target.value)}
-        />
+
+        <div className="actions">
+          <button className="btn btn-secondary">Back to Upload</button>
+          <button className="btn btn-secondary">Regenerate Prompt</button>
+          <button className="btn btn-primary">Generate Images</button>
+        </div>
       </div>
-      {/* <button type="button" onClick={sendReq}></button>
-      <button type="button">Generate image</button>
-      <button>Back</button> */}
-    </div>
+    </section>
   );
 }
 

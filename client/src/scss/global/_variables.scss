@@ -77,8 +77,19 @@
   --transition-base: 0.2s ease;
 
   --shadow-inner:
-    box-shadow: 0 0 0 6px rgba(15, 17, 21, 0.78),
-    0 0 26px rgba(0, 255, 255, 0.1);
+    0 0 0 6px rgba(15, 17, 21, 0.78), 0 0 26px rgba(0, 255, 255, 0.1);
+
+  --gradient:
+    radial-gradient(
+      800px 240px at 15% 15%,
+      rgba(0, 255, 255, 0.14),
+      transparent 55%
+    ),
+    radial-gradient(
+      700px 260px at 85% 35%,
+      rgba(0, 102, 255, 0.14),
+      transparent 55%
+    );
 }
 
 @font-face {

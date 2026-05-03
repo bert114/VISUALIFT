@@ -1,0 +1,409 @@
+/* ================================
+   Prompt Review Section
+   Tech Innovation Theme
+   Uses your new :root tokens
+================================ */
+
+.prompt-review {
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--space-8);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+.prompt-review .review-shell {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  padding: var(--space-6);
+  position: relative;
+  overflow: hidden;
+
+  background: var(--color-surface);
+
+  border: var(--border-subtle);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-m);
+}
+
+.prompt-review .review-shell::before {
+  //   content: "";
+  //   position: absolute;
+  //   inset: 0;
+  //   pointer-events: none;
+
+  //   background:
+  //     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+  //     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+
+  //   background-size: 44px 44px;
+  //   mask-image: linear-gradient(to bottom, black, transparent 86%);
+}
+
+.prompt-review .review-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Back link */
+
+.prompt-review .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  text-decoration: none;
+
+  transition:
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.prompt-review .back-link:hover {
+  color: var(--color-text);
+  transform: translateX(-2px);
+}
+
+/* Header */
+
+.prompt-review .review-header {
+  max-width: 720px;
+  margin-top: var(--space-10);
+}
+
+.prompt-review .eyebrow {
+  margin: 0 0 var(--space-3);
+
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.prompt-review .review-header h1 {
+  margin: 0;
+
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-xl), 4vw, 44px);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.03em;
+}
+
+.prompt-review .review-header p:last-child {
+  margin: var(--space-3) 0 0;
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+}
+
+/* Layout */
+
+.prompt-review .review-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+/* Cards */
+
+.prompt-review .review-card {
+  min-height: 430px;
+  padding: var(--space-6);
+
+  display: flex;
+  flex-direction: column;
+
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-m);
+
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.prompt-review .review-card:hover {
+  border-color: rgba(0, 255, 255, 0.3);
+  box-shadow: var(--shadow-m), var(--glow-cyan);
+  transform: translateY(-1px);
+}
+
+.prompt-review .review-card h2 {
+  margin: 0 0 var(--space-4);
+
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.prompt-review .prompt-card {
+  box-shadow: var(--gradient);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    inset: 0;
+    position: absolute;
+    background: var(--gradient);
+    pointer-events: none;
+  }
+}
+
+/* Image preview */
+
+.prompt-review .image-preview {
+  flex: 1;
+  min-height: 320px;
+  padding: var(--space-6);
+
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  color: var(--color-text-soft);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  background:
+    radial-gradient(circle at center, rgba(0, 255, 255, 0.08), transparent 38%),
+    rgba(255, 255, 255, 0.035);
+
+  border: 1px dashed rgba(0, 255, 255, 0.34);
+  border-radius: var(--radius-2xl);
+}
+
+.prompt-review .image-preview img {
+  width: 100%;
+  height: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  border-radius: var(--radius-xl);
+}
+
+/* Prompt input */
+
+.prompt-review .prompt-input {
+  flex: 1;
+  width: 100%;
+  min-height: 320px;
+  padding: var(--space-5);
+
+  resize: vertical;
+  outline: none;
+
+  color: var(--color-text);
+  background: var(--bg-light);
+
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.prompt-review .prompt-input::placeholder {
+  color: var(--color-text-soft);
+}
+
+.prompt-review .prompt-input:focus {
+  background: (var(--bg-light));
+  border-color: var(--color-border-active);
+  box-shadow: var(--shadow-active);
+}
+
+/* Error */
+
+.prompt-review .error-box {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+
+  color: #ffd8dc;
+  background: rgba(212, 87, 87, 0.13);
+
+  border: 1px solid rgba(212, 87, 87, 0.35);
+  border-radius: var(--radius-lg);
+
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.prompt-review .error-box strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+.prompt-review .error-box span {
+  display: block;
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+/* Actions */
+
+.prompt-review .actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+}
+
+.prompt-review .btn {
+  min-height: 52px;
+  min-width: 180px;
+  padding: 0 var(--space-6);
+
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.prompt-review .btn:hover {
+  transform: translateY(-1px);
+}
+
+.prompt-review .btn:focus-visible {
+  outline: 2px solid rgba(0, 255, 255, 0.55);
+  outline-offset: 3px;
+}
+
+.prompt-review .btn-secondary {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 255, 255, 0.28);
+}
+
+.prompt-review .btn-secondary:hover {
+  color: var(--color-accent);
+  background: var(--color-surface-hover);
+  border-color: rgba(0, 255, 255, 0.65);
+}
+
+.prompt-review .btn-primary {
+  margin-left: auto;
+
+  color: var(--color-text);
+  background: linear-gradient(135deg, var(--color-primary), #004fc4);
+
+  border: 1px solid rgba(0, 102, 255, 0.95);
+
+  box-shadow:
+    0 12px 30px rgba(0, 102, 255, 0.36),
+    0 0 26px rgba(0, 255, 255, 0.12);
+}
+
+.prompt-review .btn-primary:hover {
+  background: linear-gradient(135deg, #1473ff, var(--color-primary));
+
+  box-shadow:
+    0 16px 38px rgba(0, 102, 255, 0.46),
+    0 0 34px rgba(0, 255, 255, 0.18);
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .prompt-review {
+    padding: var(--space-5);
+  }
+
+  .prompt-review .review-shell {
+    padding: var(--space-6);
+  }
+
+  .prompt-review .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prompt-review .review-card {
+    min-height: auto;
+  }
+
+  .prompt-review .image-preview,
+  .prompt-review .prompt-input {
+    min-height: 260px;
+  }
+
+  .prompt-review .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .prompt-review .btn,
+  .prompt-review .btn-primary {
+    width: 100%;
+    min-width: 0;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .prompt-review {
+    padding: var(--space-4);
+  }
+
+  .prompt-review .review-shell {
+    padding: var(--space-5);
+    border-radius: var(--radius-xl);
+  }
+
+  .prompt-review .review-header {
+    margin-top: var(--space-6);
+  }
+
+  .prompt-review .review-grid {
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  .prompt-review .review-card {
+    padding: var(--space-4);
+    border-radius: var(--radius-xl);
+  }
+
+  .prompt-review .image-preview,
+  .prompt-review .prompt-input {
+    border-radius: var(--radius-lg);
+  }
+
+  .prompt-review .actions {
+    margin-top: var(--space-8);
+  }
+}
