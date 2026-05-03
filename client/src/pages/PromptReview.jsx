@@ -6,13 +6,15 @@ import useImageStore, {
 } from "../store/useImageStore";
 import useImageStore1 from "../store/useImageStorecopy.js";
 import usePromptStore from "../store/usePromptStore";
+import { useGenerateStore } from "../store/useGenerateStore.js";
 
 function PromptReview() {
   const { img } = useImageStore1();
-  const { generatedPrompt } = usePromptStore();
+  const { generatedPrompt, setGeneratedPrompt } = usePromptStore();
 
   const { sendReq } = requestStore();
   const { load, setLoad } = useLoadStore();
+  const { generate } = useGenerateStore();
 
   return (
     <section className="prompt-review">
@@ -44,10 +46,9 @@ function PromptReview() {
 
             <textarea
               className="prompt-input"
-              defaultValue={
-                generatedPrompt ||
-                `Describe the image style, lighting, composition, details...`
-              }
+              placeholder="Describe the image style, lighting, composition, details..."
+              value={generatedPrompt || ""}
+              onChange={(e) => setGeneratedPrompt(e.target.value)}
             />
 
             {!generatedPrompt && (
@@ -62,7 +63,12 @@ function PromptReview() {
         <div className="actions">
           <button className="btn btn-secondary">Back to Upload</button>
           <button className="btn btn-secondary">Regenerate Prompt</button>
-          <button className="btn btn-primary">Generate Images</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => generate(generatedPrompt)}
+          >
+            Generate Images
+          </button>
         </div>
       </div>
     </section>
