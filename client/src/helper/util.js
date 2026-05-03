@@ -60,7 +60,7 @@ export async function describeImgg(img) {
   return res.data.description;
 }
 
-export const buildPromp = async (prompt, userPref) => {
+export const buildPrompt = async (prompt, userPref) => {
   const res = await axios.post("http://localhost:5000/api/prompt/build", {
     prompt,
     userPref,

@@ -8,7 +8,7 @@ const usePromptStore = create((set) => ({
   setPrompt: (newPrompt) => set({ prompt: newPrompt }),
   setIsUploaded: (status) => set({ isUploaded: status }),
   handleGenerate: async () => {
-    console.log("ns click na");
+    console.log("generating......");
     const prompt = await describeImgg();
 
     set({ prompt });
