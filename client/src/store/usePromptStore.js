@@ -1,15 +1,18 @@
 import { create } from "zustand";
 import useImageStore1 from "./useImageStorecopy.js";
-import { describeImgg } from "../helper/util.js";
+import { buildPrompt, describeImgg } from "../helper/util.js";
 
 const usePromptStore = create((set) => ({
   prompt: "",
   isUploaded: false,
+  generatedPrompt: "",
 
   setPrompt: (newPrompt) => set({ prompt: newPrompt }),
   setIsUploaded: (status) => set({ isUploaded: status }),
+
   handleGenerate: async () => {
     const { setUserPref } = selectedSettings.getState();
+
     console.log("Describing uploaded image......");
     const describeImage = await describeImgg();
     console.log("done describing");
@@ -17,7 +20,12 @@ const usePromptStore = create((set) => ({
 
     const userPreference = selectedSettings.getState().userPref;
 
-    console.log(userPreference);
+    console.log("building prompt.....");
+
+    const generatedPrompt = await buildPrompt(userPreference);
+
+    set({ generatedPrompt });
+    console.log("done");
   },
 }));
 
@@ -31,7 +39,6 @@ export const selectedSettings = create((set) => ({
     numberOfImages: "auto",
     describeImage: null,
   },
-
   setUserPref: (key, value) => {
     set((state) => ({
       userPref: {

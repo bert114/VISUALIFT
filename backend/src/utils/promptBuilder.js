@@ -2,8 +2,8 @@ export function cleanText(value = "") {
   return String(value).trim().replace(/\s+/g, " ");
 }
 
-export function buildFinalPrompt(prompt, userPref = {}) {
-  const cleanPrompt = String(prompt || "")
+export function buildFinalPrompt(obj = {}) {
+  const cleanPrompt = String(obj.describeImage || "")
     .replace(/\s+/g, " ")
     .trim();
 
@@ -13,20 +13,20 @@ export function buildFinalPrompt(prompt, userPref = {}) {
     parts.push(cleanPrompt);
   }
 
-  if (userPref.imagePurpose) {
-    parts.push(`Create this as a ${formatValue(userPref.imagePurpose)}.`);
+  if (obj.imagePurpose) {
+    parts.push(`Create this as a ${formatValue(obj.imagePurpose)}.`);
   }
 
-  if (userPref.background) {
-    parts.push(`Use a ${formatValue(userPref.background)} background.`);
+  if (obj.background) {
+    parts.push(`Use a ${formatValue(obj.background)} background.`);
   }
 
-  if (userPref.color) {
-    parts.push(`Use a ${formatValue(userPref.color)} color palette.`);
+  if (obj.color) {
+    parts.push(`Use a ${formatValue(obj.color)} color palette.`);
   }
 
-  if (userPref.aspectRatio) {
-    parts.push(`Aspect ratio: ${userPref.aspectRatio}.`);
+  if (obj.aspectRatio) {
+    parts.push(`Aspect ratio: ${obj.aspectRatio}.`);
   }
 
   return parts.join(" ");

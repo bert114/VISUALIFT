@@ -1,16 +1,13 @@
+import { successResponse } from "../helper/responseHelper.js";
 import { buildFinalPrompt } from "../utils/promptBuilder.js";
 
 export const buildPromptController = async (req, res) => {
   try {
-    const data = await req.body;
+    const data = req.body;
 
-    const prompt = data.prompt;
-    const userPref = data.userPref;
+    const text = await buildFinalPrompt(data);
 
-    const text = await buildFinalPrompt(prompt, userPref);
-    console.log(text);
-
-    res.json({ success: true, data: text });
+    return successResponse(res, 200, { result: text });
   } catch (error) {
     console.log(error);
   }
