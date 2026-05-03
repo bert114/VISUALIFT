@@ -4,22 +4,13 @@ import useImageStore, {
   requestStore,
   useLoadStore,
 } from "../store/useImageStore";
+import useImageStore1 from "../store/useImageStorecopy.js";
+import usePromptStore from "../store/usePromptStore";
 
 function PromptReview() {
-  const { goUpload, goPromptReview, goResult } = useAppNavigate();
+  const { img } = useImageStore1();
+  const { generatedPrompt } = usePromptStore();
 
-  const {
-    error,
-    handleImage,
-    preview,
-    handleRemove,
-    setSelections,
-    selections,
-    validateSelections,
-    imgFile,
-    generatedPrompt,
-    setGeneratedPrompt,
-  } = useImageStore();
   const { sendReq } = requestStore();
   const { load, setLoad } = useLoadStore();
 
@@ -29,20 +20,16 @@ function PromptReview() {
       <span>You can edit this before generating images</span>
       <div className="img-prompt">
         <div className="img-container">
-          <img src={preview} alt="" />
+          <img src={img} alt="generated image" />
         </div>
         <textarea
           value={generatedPrompt ?? ""}
           onChange={(e) => setGeneratedPrompt(e.target.value)}
         />
       </div>
-      <button type="button" onClick={sendReq}>
-        {load ? "Regenerating prmpt" : "Regenerate  prompt"}
-      </button>
+      {/* <button type="button" onClick={sendReq}></button>
       <button type="button">Generate image</button>
-      <button type="button" onClick={goUpload}>
-        Back
-      </button>
+      <button>Back</button> */}
     </div>
   );
 }

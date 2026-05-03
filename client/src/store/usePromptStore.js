@@ -1,31 +1,41 @@
 import { create } from "zustand";
 import useImageStore1 from "./useImageStorecopy.js";
 import { buildPrompt, describeImgg } from "../helper/util.js";
+import useToastStore from "./useToastStore.js";
 
 const usePromptStore = create((set) => ({
   prompt: "",
   isUploaded: false,
   generatedPrompt: "",
+  loading: false,
+  step: 1,
 
   setPrompt: (newPrompt) => set({ prompt: newPrompt }),
   setIsUploaded: (status) => set({ isUploaded: status }),
 
   handleGenerate: async () => {
+    set({ loading: true });
+    const { showToast } = useToastStore.getState();
     const { setUserPref } = selectedSettings.getState();
 
-    console.log("Describing uploaded image......");
+    showToast("building prompt.....", "warning");
     const describeImage = await describeImgg();
     console.log("done describing");
     setUserPref("describeImage", describeImage);
 
     const userPreference = selectedSettings.getState().userPref;
 
-    console.log("building prompt.....");
+    showToast("building prompt.....", "warning");
 
     const generatedPrompt = await buildPrompt(userPreference);
 
     set({ generatedPrompt });
-    console.log("done");
+    showToast("done", "success");
+    set({ loading: true, step: 2 });
+  },
+
+  setGeneratedPrompt: (value) => {
+    set({ generatedPrompt: value });
   },
 }));
 

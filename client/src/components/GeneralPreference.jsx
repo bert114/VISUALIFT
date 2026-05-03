@@ -18,7 +18,7 @@ import Color from "./preference/Color.jsx";
 
 function GenerationPreferences() {
   const { handleGenerate, isUploaded } = usePromptStore();
-  const { prompt } = usePromptStore();
+  const { prompt, loading } = usePromptStore();
   const {
     imagePurpose,
     model,
@@ -71,7 +71,7 @@ function GenerationPreferences() {
           className="primary-btn"
           onClick={handleGenerate}
           data-testid="generate-btn"
-          disabled={!isUploaded}
+          disabled={!isUploaded || loading}
         >
           Generate
         </button>

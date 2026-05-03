@@ -11,7 +11,7 @@ import useLoadStore from "./useLoadStore.js";
 import usePromptStore from "./usePromptStore.js";
 
 const useImageStore1 = create((set, get) => ({
-  img: "",
+  img: null,
   file: null,
 
   handleImage1: async (e) => {
