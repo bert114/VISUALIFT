@@ -1,10 +1,11 @@
 import useLoadStore from "../store/useLoadStore.js";
+import useUIStore from "../store/useUIStore.js";
 import Loaders from "./loaders.jsx";
 
 const UploadContent = ({ img, onRemove, inputRef }) => {
-  const { load } = useLoadStore();
+  const { loading } = useUIStore();
 
-  if (load) {
+  if (loading) {
     return <Loaders />;
   }
 

@@ -59,40 +59,6 @@ const useImageStore = create((set, get) => ({
       inputRef.current.value = "";
     }
   },
-
-  validateSelections: () => {
-    const { selections } = get();
-
-    if (!selections.aspectRatio) {
-      set({ error: "Select aspect ratio" });
-      return false;
-    }
-
-    if (!selections.color) {
-      set({ error: "Select color" });
-      return false;
-    }
-
-    set({ error: "" });
-    return true;
-  },
-
-  validateSelections: () => {
-    const { selections, preview } = get();
-    const { valid, error } = isSelectionValid(selections);
-
-    if (!preview) {
-      set({ error: IMAGE_ERRORS.noFile });
-      return false;
-    }
-
-    if (!valid) {
-      set({ error });
-      return false;
-    }
-
-    return true;
-  },
 }));
 
 export const requestStore = create((set, get) => ({

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { IMAGE_ERRORS, isValidFileSize } from "./helper";
-import useImageStore1 from "../store/useImageStorecopy.js";
 
 export function isValidImageFile(file) {
   const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
