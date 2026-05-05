@@ -18,6 +18,8 @@ function UploadPage() {
   const { removeImage, handleImage1, img } = useImageStore1();
   const { load, setLoad } = useLoadStore();
 
+  console.log(img);
+
   return (
     <div className="reference">
       <section

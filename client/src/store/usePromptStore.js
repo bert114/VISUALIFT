@@ -72,6 +72,8 @@ export const selectedSettings = create((set, get) => ({
 
       return { userPref: updatedPref };
     });
+
+    console.log(get().userPref);
   },
 }));
 
