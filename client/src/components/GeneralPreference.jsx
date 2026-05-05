@@ -15,6 +15,7 @@ import ImagePrefPurpose from "./preference/ImagePrefPurpose.jsx";
 import StyleModel from "./preference/StyleModel.jsx";
 import Background from "./preference/Background.jsx";
 import Color from "./preference/Color.jsx";
+import ImageCount from "./preference/ImageCount.jsx";
 
 function GenerationPreferences() {
   const { handleGenerate, isUploaded } = usePromptStore();
@@ -66,12 +67,13 @@ function GenerationPreferences() {
         <StyleModel />
         <Background />
         <Color />
+        <ImageCount />
 
         <button
           className="primary-btn"
           onClick={handleGenerate}
           data-testid="generate-btn"
-          disabled={!isUploaded || loading}
+          // disabled={!isUploaded || loading}
         >
           Generate
         </button>

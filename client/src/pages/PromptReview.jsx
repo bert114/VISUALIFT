@@ -5,12 +5,13 @@ import useImageStore, {
   useLoadStore,
 } from "../store/useImageStore";
 import useImageStore1 from "../store/useImageStorecopy.js";
-import usePromptStore from "../store/usePromptStore";
+import usePromptStore, { selectedSettings } from "../store/usePromptStore";
 import { useGenerateStore } from "../store/useGenerateStore.js";
 
 function PromptReview() {
   const { img } = useImageStore1();
   const { generatedPrompt, setGeneratedPrompt } = usePromptStore();
+  const { userPref } = selectedSettings();
 
   const { sendReq } = requestStore();
   const { load, setLoad } = useLoadStore();
@@ -65,7 +66,7 @@ function PromptReview() {
           <button className="btn btn-secondary">Regenerate Prompt</button>
           <button
             className="btn btn-primary"
-            onClick={() => generate(generatedPrompt)}
+            onClick={() => generate(userPref)}
           >
             Generate Images
           </button>

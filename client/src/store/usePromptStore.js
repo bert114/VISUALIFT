@@ -2,6 +2,7 @@ import { create } from "zustand";
 import useImageStore1 from "./useImageStorecopy.js";
 import { buildPrompt, describeImgg } from "../helper/util.js";
 import useToastStore from "./useToastStore.js";
+import { getNumber } from "../helper/helper.js";
 
 const usePromptStore = create((set) => ({
   prompt: "",
@@ -15,6 +16,7 @@ const usePromptStore = create((set) => ({
 
   handleGenerate: async () => {
     set({ loading: true });
+
     const { showToast } = useToastStore.getState();
     const { setUserPref } = selectedSettings.getState();
 
@@ -25,11 +27,13 @@ const usePromptStore = create((set) => ({
 
     const userPreference = selectedSettings.getState().userPref;
 
+    console.log(userPreference);
+
     showToast("building prompt.....", "warning");
 
     const generatedPrompt = await buildPrompt(userPreference);
 
-    set({ generatedPrompt });
+    set({ generatedPrompt: userPreference });
     showToast("done", "success");
     set({ loading: true, step: 2 });
   },
@@ -39,23 +43,35 @@ const usePromptStore = create((set) => ({
   },
 }));
 
-export const selectedSettings = create((set) => ({
+export const selectedSettings = create((set, get) => ({
+  //   const payload = {
+  //   model: "img4",
+  //   prompt: "",
+  //   n: 2,
+  //   size: "",
+  //   response_format: "url"
+  // };
+
   userPref: {
+    model: "img4",
+    prompt: "A vibrant oil painting of a futuristic cityscape at sunset",
+    n: 1,
+    size: "1792x1024",
+    response_format: "url",
     imagePurpose: "All",
-    model: "Realistic",
     background: "Solid white",
     color: "#00E5FF",
-    aspectRatio: "1:1",
-    numberOfImages: "auto",
-    describeImage: null,
   },
+
   setUserPref: (key, value) => {
-    set((state) => ({
-      userPref: {
+    set((state) => {
+      const updatedPref = {
         ...state.userPref,
         [key]: value,
-      },
-    }));
+      };
+
+      return { userPref: updatedPref };
+    });
   },
 }));
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import useLoadStore from "../store/useLoadStore.js";
+import { models } from "../static/constantfile.js";
 export function isValidFileSize(file, maxSize = 5 * 1024 * 1024) {
   return file.size <= maxSize;
 }
@@ -38,3 +39,10 @@ export function getUrl(img) {
 
   return path;
 }
+
+export const getNumber = (model) => {
+  const findModel = models.find((item) => item.model === model);
+  const num = findModel.n;
+
+  return [1, 2, 3, 4].filter((n) => n <= num);
+};

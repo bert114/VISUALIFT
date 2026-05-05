@@ -3,11 +3,17 @@ import PreferenceBlock from "./PreferenceBlock.jsx";
 import { models } from "../../static/constantfile.js";
 import { usePreferenceActions } from "../../hooks/usePreferenceAction.jsx";
 import { selectedSettings } from "../../store/usePromptStore.js";
+import { getNumber } from "../../helper/helper.js";
 
 function StyleModel() {
   const action = usePreferenceActions();
-  const [selectedModel, setSelectedModel] = useState("Realistic");
+  const [selectedModel, setSelectedModel] = useState("img4");
   const { setUserPref } = selectedSettings();
+
+  const handleImageCount = (model) => {
+    setUserPref("model", model);
+    setSelectedModel(model);
+  };
 
   return (
     <PreferenceBlock title="Style / Model">
@@ -17,8 +23,7 @@ function StyleModel() {
             key={item.title}
             type="button"
             onClick={() => {
-              setUserPref("model", item.title);
-              setSelectedModel(item.title);
+              handleImageCount(item.model);
             }}
             className={`model-card ${
               selectedModel === item.title ? "model-card--active" : ""

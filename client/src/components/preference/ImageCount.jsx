@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PreferenceBlock from "./PreferenceBlock.jsx";
+import { getNumber } from "../../helper/helper.js";
+import { selectedSettings } from "../../store/usePromptStore.js";
+import { models } from "../../static/constantfile.js";
 
 function ImageCount() {
+  const [numberOptions, setNumberOptions] = useState([1]);
+  const { userPref, setUserPref } = selectedSettings() || {};
+  const { model } = userPref;
+
+  useEffect(() => {
+    setNumberOptions(getNumber(model));
+  }, [model]);
+
   return (
     <PreferenceBlock title="Number of Images">
       <select
         className="image-count-select"
-        onChange={(e) => setNumberOfImages(e.target.value)}
+        onChange={(e) => setUserPref("n", e.target.value)}
       >
-        <option>Auto — depends on selected model</option>
-        <option>1 image</option>
-        <option>2 images</option>
-        <option>4 images</option>
+        {numberOptions.map((n) => {
+          return (
+            <option key={n} value={n}>
+              {n}
+            </option>
+          );
+        })}
       </select>
     </PreferenceBlock>
   );
