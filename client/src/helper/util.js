@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IMAGE_ERRORS, isValidFileSize } from "./helper";
+import useImageStore from "../store/useImageStorecopy.js";
 
 export function isValidImageFile(file) {
   const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
@@ -40,7 +41,7 @@ export function isSelectionValid(selections) {
 }
 
 export async function describeImgg(img) {
-  const file = useImageStore1.getState().file;
+  const file = useImageStore.getState().file;
 
   const formData = new FormData();
   formData.append("image", file);

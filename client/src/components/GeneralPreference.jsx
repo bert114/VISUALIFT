@@ -16,10 +16,14 @@ import StyleModel from "./preference/StyleModel.jsx";
 import Background from "./preference/Background.jsx";
 import Color from "./preference/Color.jsx";
 import ImageCount from "./preference/ImageCount.jsx";
+import useImageStore from "../store/useImageStorecopy.js";
+import useUIStore from "../store/useUIStore.js";
 
 function GenerationPreferences() {
   const { handleGenerate, isUploaded } = usePromptStore();
-  const { prompt, loading } = usePromptStore();
+  const { img } = useImageStore();
+  const { prompt } = usePromptStore();
+  const { loading } = useUIStore();
   const {
     imagePurpose,
     model,
@@ -47,13 +51,13 @@ function GenerationPreferences() {
     [imagePurpose, model, background, color, aspectRatio, numberOfImages],
   );
 
-  useEffect(() => {
-    return;
-    console.log(userPreference);
-    if (!prompt) return;
+  // useEffect(() => {
+  //   return;
+  //   console.log(userPreference);
+  //   if (!prompt) return;
 
-    buildPrompt(prompt, userPreference);
-  }, [prompt, userPreference]);
+  //   buildPrompt(prompt, userPreference);
+  // }, [prompt, userPreference]);
 
   return (
     <section className="generation-preferences">
@@ -70,10 +74,10 @@ function GenerationPreferences() {
         <ImageCount />
 
         <button
-          className="primary-btn"
+          className="btn btn-primary"
           onClick={handleGenerate}
           data-testid="generate-btn"
-          // disabled={!isUploaded || loading}
+          disabled={!img || loading}
         >
           Generate
         </button>

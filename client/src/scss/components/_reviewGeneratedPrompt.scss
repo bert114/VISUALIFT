@@ -10,6 +10,8 @@
   padding: var(--space-8);
   color: var(--color-text);
   font-family: var(--font-body);
+  max-width: 1200px;
+  margin-inline: auto;
 }
 
 .prompt-review .review-shell {
@@ -171,7 +173,6 @@
 .prompt-review .image-preview {
   flex: 1;
   min-height: 320px;
-  padding: var(--space-6);
 
   display: grid;
   place-items: center;
@@ -293,48 +294,6 @@
     border-color var(--transition-base),
     box-shadow var(--transition-base),
     transform var(--transition-base);
-}
-
-.prompt-review .btn:hover {
-  transform: translateY(-1px);
-}
-
-.prompt-review .btn:focus-visible {
-  outline: 2px solid rgba(0, 255, 255, 0.55);
-  outline-offset: 3px;
-}
-
-.prompt-review .btn-secondary {
-  color: var(--color-text);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 255, 255, 0.28);
-}
-
-.prompt-review .btn-secondary:hover {
-  color: var(--color-accent);
-  background: var(--color-surface-hover);
-  border-color: rgba(0, 255, 255, 0.65);
-}
-
-.prompt-review .btn-primary {
-  margin-left: auto;
-
-  color: var(--color-text);
-  background: linear-gradient(135deg, var(--color-primary), #004fc4);
-
-  border: 1px solid rgba(0, 102, 255, 0.95);
-
-  box-shadow:
-    0 12px 30px rgba(0, 102, 255, 0.36),
-    0 0 26px rgba(0, 255, 255, 0.12);
-}
-
-.prompt-review .btn-primary:hover {
-  background: linear-gradient(135deg, #1473ff, var(--color-primary));
-
-  box-shadow:
-    0 16px 38px rgba(0, 102, 255, 0.46),
-    0 0 34px rgba(0, 255, 255, 0.18);
 }
 
 /* Responsive */

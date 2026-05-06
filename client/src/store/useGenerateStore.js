@@ -14,6 +14,7 @@
 import { create } from "zustand";
 import sendToInfip from "../helper/infip.js";
 import useUIStore from "./useUIStore.js";
+import usePromptStore from "./usePromptStore.js";
 
 const useGenerateStore = create((set) => ({
   result: null,
@@ -21,6 +22,7 @@ const useGenerateStore = create((set) => ({
 
   generate: async (payload) => {
     const { setLoading, showToast } = useUIStore.getState();
+    const { setStep } = usePromptStore.getState();
 
     setLoading(true);
     set({ error: null });
@@ -30,6 +32,7 @@ const useGenerateStore = create((set) => ({
 
       set({ result: data });
       showToast("Image generated successfully", "success");
+      setStep(3);
 
       return data;
     } catch (error) {

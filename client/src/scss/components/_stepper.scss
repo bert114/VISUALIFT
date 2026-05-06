@@ -18,8 +18,11 @@
   align-items: start;
   gap: 0;
   width: 100%;
-  padding: var(--space-4) 0;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: var(--space-8) var(--space-4);
   overflow: visible;
+  margin-bottom: var(--space-4);
 
   .step {
     position: relative;

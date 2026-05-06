@@ -5,6 +5,7 @@ import useImageStore from "../store/useImageStorecopy.js";
 import usePromptStore from "../store/usePromptStore";
 
 import useGenerateStore from "../store/useGenerateStore.js";
+import useUIStore from "../store/useUIStore.js";
 
 function PromptReview() {
   const { img } = useImageStore();
@@ -13,18 +14,19 @@ function PromptReview() {
   const { sendReq } = requestStore();
   const { load, setLoad } = useLoadStore();
   const { generate } = useGenerateStore();
+  const { loading } = useUIStore();
 
   return (
     <section className="prompt-review">
       <div className="review-shell">
-        <a className="back-link" href="#">
+        {/* <a className="back-link" href="#">
           ← Back to Upload
         </a>
 
         <header className="review-header">
           <h1>Review Your Prompt</h1>
           <p>Edit your prompt before generating images.</p>
-        </header>
+        </header> */}
 
         <div className="review-grid">
           <article className="review-card">
@@ -64,6 +66,7 @@ function PromptReview() {
           <button
             className="btn btn-primary"
             onClick={() => generate(generatedPrompt)}
+            disabled={loading}
           >
             Generate Images
           </button>

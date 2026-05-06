@@ -111,6 +111,8 @@ const usePromptStore = create((set) => ({
   step: 1,
 
   setPrompt: (prompt) => set({ prompt }),
+  setStep: (step) => set({ step }),
+
   setIsUploaded: (status) => set({ isUploaded: status }),
   setGeneratedPrompt: (generatedPrompt) => set({ generatedPrompt }),
 
@@ -119,6 +121,7 @@ const usePromptStore = create((set) => ({
     const { setUserPref } = selectedSettings.getState();
 
     setLoading(true);
+    console.log("click");
 
     try {
       showToast("Building prompt...", "warning");
@@ -129,6 +132,7 @@ const usePromptStore = create((set) => ({
       const userPref = selectedSettings.getState().userPref;
       const generatedPrompt = await buildPrompt(userPref);
 
+      console.log(generatedPrompt);
       set({
         generatedPrompt,
         step: 2,

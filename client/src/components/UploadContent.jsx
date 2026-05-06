@@ -5,7 +5,7 @@ import Loaders from "./loaders.jsx";
 const UploadContent = ({ img, onRemove, inputRef }) => {
   const { loading } = useUIStore();
 
-  if (loading) {
+  if (loading && !img) {
     return <Loaders />;
   }
 
