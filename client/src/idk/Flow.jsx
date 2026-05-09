@@ -13,7 +13,6 @@ function Flow() {
     <>
       {step === 1 && <UploadPage />}
       {step === 2 && <PromptReview />}
-      {step === 1 && <DownloadSection />}
       {step === 3 && <GalleryReviewLayout />}
       {/* {step === 3 && <Results />} */}
     </>

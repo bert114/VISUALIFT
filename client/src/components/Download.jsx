@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Download } from "lucide-react";
+import usePromptStore from "../store/usePromptStore.js";
 
 const galleryItems = [
   {
@@ -42,6 +43,7 @@ const galleryItems = [
 
 export default function GalleryReviewLayout() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { handleReset } = usePromptStore();
 
   const activeItem = galleryItems[activeIndex];
 
@@ -178,6 +180,7 @@ export default function GalleryReviewLayout() {
             <button
               className="image-details__action image-details__action--ghost"
               type="button"
+              onClick={handleReset}
             >
               Start Over
             </button>
