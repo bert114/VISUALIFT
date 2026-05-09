@@ -64,3 +64,18 @@ export const buildPrompt = async (obj) => {
 
   return res.data.result;
 };
+
+export const checkLoaded = (images, cb) => {
+  images.forEach((img, index) => {
+    const image = new Image();
+
+    image.onload = () => {
+      cb((prev) => ({
+        ...prev,
+        [index]: true,
+      }));
+    };
+
+    image.src = img.url;
+  });
+};

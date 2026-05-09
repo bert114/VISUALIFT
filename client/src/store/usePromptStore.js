@@ -107,8 +107,10 @@ export const selectedSettings = create((set) => ({
 const usePromptStore = create((set) => ({
   prompt: "",
   isUploaded: false,
-  generatedPrompt: "",
-  step: 1,
+  generatedPrompt: `The image shows a young man with dark hair wearing a white collared shirt, blue tie, and black backpack. He is standing against a beige wall adorned with various posters and signs. The man's gaze is directed straight at the camera, creating an engaging portrait. Create this as a Website Banner. Use a Transparent
+Checkerboard background. Use a #00E5FF color palette.`,
+
+  step: 3,
 
   setPrompt: (prompt) => set({ prompt }),
   setStep: (step) => set({ step }),

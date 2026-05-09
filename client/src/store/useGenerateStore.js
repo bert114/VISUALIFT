@@ -32,6 +32,7 @@ const useGenerateStore = create((set) => ({
 
       set({ result: data });
       showToast("Image generated successfully", "success");
+
       setStep(3);
 
       return data;

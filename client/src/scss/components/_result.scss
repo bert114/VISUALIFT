@@ -1,0 +1,172 @@
+.image-preview {
+  width: 100%;
+  height: 340px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f5f8fd;
+}
+
+.generated-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.inspiration-panel {
+  width: 100%;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #dfe6f3;
+  border-radius: 22px;
+  font-family: Inter, Arial, sans-serif;
+  color: #14213d;
+}
+
+.inspiration-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 38px;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: #5d82ff;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+.inspiration-header h2 {
+  margin: 0 0 12px;
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 520px;
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 540px;
+}
+
+.actions button {
+  height: 52px;
+  padding: 0 22px;
+  border: 1px solid #d8deea;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.actions .primary {
+  background: #5f8df7;
+  border-color: #5f8df7;
+  color: #ffffff;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.option-card {
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.preview {
+  height: 338px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f8fd;
+}
+
+.preview h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #3f3f46;
+}
+
+.preview-1 {
+  background:
+    radial-gradient(circle at 25% 30%, #dce8ff 0, transparent 28%),
+    radial-gradient(circle at 80% 35%, #d6f7e8 0, transparent 30%), #f7fbff;
+}
+
+.preview-2 {
+  background:
+    radial-gradient(circle at 60% 20%, #dfe9ff 0, transparent 25%),
+    radial-gradient(circle at 20% 72%, #e3edff 0, transparent 28%), #f7fbff;
+}
+
+.preview-3 {
+  background:
+    radial-gradient(circle at 76% 28%, #e2ebff 0, transparent 22%),
+    radial-gradient(circle at 28% 70%, #dce8ff 0, transparent 24%), #f8fbff;
+}
+
+.card-content {
+  padding: 18px;
+}
+
+.card-content h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.card-content p {
+  margin: 0;
+  color: #5f6b7a;
+  font-size: 14px;
+}
+
+.prompt-box {
+  padding: 18px;
+  background: #f7f9ff;
+  border: 1px solid #d8e4ff;
+  border-radius: 14px;
+  color: #172554;
+}
+
+.prompt-box strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.prompt-box p {
+  margin: 0;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .inspiration-header {
+    flex-direction: column;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    max-width: none;
+  }
+}

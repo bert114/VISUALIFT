@@ -2,7 +2,7 @@ import React from "react";
 import { useAppNavigate } from "../hooks/useAppNavigate";
 import { requestStore, useLoadStore } from "../store/useImageStore";
 import useImageStore from "../store/useImageStorecopy.js";
-import usePromptStore from "../store/usePromptStore";
+import usePromptStore, { selectedSettings } from "../store/usePromptStore";
 
 import useGenerateStore from "../store/useGenerateStore.js";
 import useUIStore from "../store/useUIStore.js";
@@ -10,6 +10,7 @@ import useUIStore from "../store/useUIStore.js";
 function PromptReview() {
   const { img } = useImageStore();
   const { generatedPrompt, setGeneratedPrompt } = usePromptStore();
+  const { userPref } = selectedSettings();
 
   const { sendReq } = requestStore();
   const { load, setLoad } = useLoadStore();
@@ -65,7 +66,7 @@ function PromptReview() {
           <button className="btn btn-secondary">Regenerate Prompt</button>
           <button
             className="btn btn-primary"
-            onClick={() => generate(generatedPrompt)}
+            onClick={() => generate(userPref)}
             disabled={loading}
           >
             Generate Images
