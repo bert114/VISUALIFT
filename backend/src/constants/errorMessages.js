@@ -1,6 +1,6 @@
 const ERROR_MESSAGES = {
   SERVER_ERROR: "Something went wrong on the server. Please try again.",
-  ROUTE_NOT_FOUND: "API route was not found.",
+  ROUTE_NOT_FOUND: "API route was not foundwdedwdwdw.",
   VALIDATION_ERROR: "One or more fields are invalid.",
   REQUEST_BODY_REQUIRED: "Request body is required.",
   INVALID_JSON_BODY: "Request body must be valid JSON.",
