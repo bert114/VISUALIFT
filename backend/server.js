@@ -9,6 +9,7 @@ import connectDB from "./src/config/db.js";
 import buildRoute from "./src/routes/buildRoute.js";
 import imageGenRoute from "./src/routes/imageGenRoute.js";
 import errorMiddleware from "./src/middlewares/erros.js";
+import notFoundMiddleware from "./src/middlewares/notFoundMiddleware .js";
 dotenv.config();
 
 const app = express();
@@ -44,6 +45,7 @@ app.use("/api/prompt", buildRoute);
 app.use("/api/generate", imageGenRoute);
 
 app.use(errorMiddleware);
+app.use(notFoundMiddleware);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
