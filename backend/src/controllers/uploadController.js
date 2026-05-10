@@ -1,15 +1,16 @@
 import cloudinary from "../config/cloudinary.js";
+import ERROR_MESSAGES from "../constants/errorMessages.js";
 import { uploadToCloudinary } from "../helper/imageHelper.js";
 import { errorResponse, successResponse } from "../helper/responseHelper.js";
+import { validateUploadFile } from "../helper/validators.js";
 import { saveDb } from "../services/cloudinaryService.js";
+import throwError from "../utils/throwErrors.js";
 
-const uploadController = async (req, res) => {
+const uploadController = async (req, res, next) => {
   try {
-    if (!req.file) {
-      return errorResponse(res, 400, "No file uploaded");
-    }
+    const file = req.file;
 
-    console.log("Received file buffer:", req.file);
+    validateUploadFile(file);
 
     const uploadResult = await uploadToCloudinary(req.file.buffer);
 
@@ -22,12 +23,7 @@ const uploadController = async (req, res) => {
       data,
     });
   } catch (error) {
-    return errorResponse(
-      res,
-      error.statusCode || 500,
-      error.message || "Failed to upload image",
-      error.details || error.message,
-    );
+    next(error);
   }
 };
 
