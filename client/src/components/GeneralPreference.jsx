@@ -77,7 +77,7 @@ function GenerationPreferences() {
           className="btn btn-primary"
           onClick={handleGenerate}
           data-testid="generate-btn"
-          disabled={!img || loading}
+          //disabled={!img || loading}
         >
           Generate
         </button>

@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { buildPrompt, describeImgg } from "../helper/util.js";
 import useUIStore from "./useUIStore.js";
+import useImageStore from "./useImageStorecopy.js";
 
 export const selectedSettings = create((set) => ({
   userPref: {

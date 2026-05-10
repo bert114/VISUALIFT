@@ -1,14 +1,20 @@
+import useImageStore from "../store/useImageStorecopy.js";
 import useToastStore from "../store/useToastStore.js";
+import useUIStore from "../store/useUIStore.js";
 
 export const isValidImage = (file) => {
-  const toast = useToastStore.getState().showToast;
+  const { showToast } = useUIStore.getState();
+  const { removeImage } = useImageStore.getState();
+
   if (!file) {
-    toast("No file selected", "error");
+    showToast("No file selected", "error");
+    removeImage();
     return false;
   }
 
   if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
-    toast("Only JPG, PNG, and WEBP files are allowed", "error");
+    showToast("Only JPG, PNG, and WEBP files are allowed", "error");
+    const { removeImage } = useImageStore.getState();
     return false;
   }
 
@@ -16,14 +22,18 @@ export const isValidImage = (file) => {
 };
 
 export const isValidFileSize = (file, maxMB = 5) => {
-  const toast = useToastStore.getState().showToast;
+  const { showToast } = useUIStore.getState();
+  const { removeImage } = useImageStore.getState();
   if (!file) {
-    toast("No file selected", "error");
+    showToast("No file selected", "error");
+    removeImage();
     return false;
   }
 
   if (file.size > maxMB * 1024 * 1024) {
-    toast(`File size must be ${maxMB}MB or less`, "error");
+    showToast(`File size must be ${maxMB}MB or less`, "error");
+    removeImage();
+
     return false;
   }
 

@@ -72,7 +72,7 @@ export default useImageStore;
 
 */
 
-const useImageStore = create((set) => ({
+const useImageStore = create((set, get) => ({
   img: null,
   file: null,
 
@@ -87,7 +87,8 @@ const useImageStore = create((set) => ({
       const image = getImage(e);
 
       if (!isValidImage(image) || !isValidFileSize(image)) {
-        throw new Error("Image invalid");
+        e.target.value = "";
+        return;
       }
 
       const data = await uploadImage(image);
@@ -103,6 +104,7 @@ const useImageStore = create((set) => ({
 
       setIsUploaded(true);
       showToast("Image uploaded successfully", "success");
+      e.target.value = "";
     } catch (error) {
       setIsUploaded(false);
       showToast(error.message || "Failed to upload image", "error");
@@ -111,7 +113,7 @@ const useImageStore = create((set) => ({
     }
   },
 
-  removeImage: () => {
+  removeImage: (input = null) => {
     const { setIsUploaded } = usePromptStore.getState();
 
     set({ img: null, file: null });
