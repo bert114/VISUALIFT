@@ -1,5 +1,4 @@
 const ERROR_MESSAGES = {
-  // General
   SERVER_ERROR: "Something went wrong on the server. Please try again.",
   ROUTE_NOT_FOUND: "API route was not found.",
   VALIDATION_ERROR: "One or more fields are invalid.",
@@ -8,7 +7,6 @@ const ERROR_MESSAGES = {
   METHOD_NOT_ALLOWED: "This HTTP method is not allowed for this route.",
   RATE_LIMITED: "Too many requests. Please wait and try again.",
 
-  // Upload
   IMAGE_REQUIRED: "Please upload a reference image.",
   ONE_IMAGE_ONLY: "Please upload only one reference image.",
   INVALID_FILE_TYPE: "Only JPG, PNG, and WEBP images are supported.",
@@ -27,7 +25,6 @@ const ERROR_MESSAGES = {
   INVALID_ASPECT_RATIO:
     "Aspect ratio must be one of: 1:1, 4:3, 3:4, 16:9, or 9:16.",
 
-  // Draft
   DRAFT_ID_REQUIRED: "draftId is required.",
   INVALID_DRAFT_ID: "draftId is invalid.",
   DRAFT_NOT_FOUND: "Draft was not found.",
@@ -38,7 +35,6 @@ const ERROR_MESSAGES = {
   RESET_FAILED: "Draft could not be reset. Please try again.",
   GENERATION_IN_PROGRESS: "Cannot reset while image generation is in progress.",
 
-  // Gemini / Prompt
   IMAGE_NOT_FOUND: "No uploaded image exists for this draft.",
   IMAGE_FILE_MISSING:
     "The uploaded image file could not be found. Please upload it again.",
@@ -52,7 +48,6 @@ const ERROR_MESSAGES = {
     "Gemini did not return a usable prompt. Please try again.",
   PROMPT_SAVE_FAILED: "Enhanced prompt could not be saved. Please try again.",
 
-  // Prompt editing
   EDITED_PROMPT_REQUIRED: "Edited prompt is required before generation.",
   EDITED_PROMPT_TOO_SHORT: "Edited prompt must be at least 10 characters.",
   EDITED_PROMPT_TOO_LONG: "Edited prompt must be 3000 characters or fewer.",
@@ -60,7 +55,6 @@ const ERROR_MESSAGES = {
   PROMPT_NOT_READY:
     "Please enhance and review the prompt before generating images.",
 
-  // Infip / Generation
   FINAL_PROMPT_REQUIRED: "Final prompt is required.",
   FINAL_PROMPT_TOO_SHORT: "Final prompt must be at least 10 characters.",
   FINAL_PROMPT_TOO_LONG: "Final prompt must be 3000 characters or fewer.",
@@ -78,14 +72,12 @@ const ERROR_MESSAGES = {
   GENERATION_SAVE_FAILED:
     "Generated results could not be saved. Please try again.",
 
-  // Generation status
   GENERATION_ID_REQUIRED: "generationId is required.",
   INVALID_GENERATION_ID: "generationId is invalid.",
   GENERATION_NOT_FOUND: "Generation was not found.",
   GENERATION_FAILED: "Image generation failed. Please try again.",
   GENERATION_EXPIRED: "Generation has expired. Please start again.",
 
-  // Selection
   GENERATION_NOT_COMPLETED:
     "You can only select images after generation is completed.",
   SELECTED_IMAGE_IDS_REQUIRED: "selectedImageIds is required.",
@@ -95,7 +87,6 @@ const ERROR_MESSAGES = {
   SELECTION_SAVE_FAILED:
     "Selected results could not be saved. Please try again.",
 
-  // Config
   MONGO_URI_MISSING: "MongoDB connection string is not configured.",
   DATABASE_CONNECTION_FAILED: "Database connection failed.",
   UPLOAD_DIR_MISSING: "Upload directory is not configured.",
