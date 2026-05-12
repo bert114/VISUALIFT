@@ -41,6 +41,7 @@ function UploadPage() {
                   accept="image/png,image/jpeg,image/webp"
                   hidden
                 />
+
                 <UploadContent
                   img={img}
                   onRemove={removeImage}

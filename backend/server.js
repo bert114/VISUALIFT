@@ -10,10 +10,15 @@ import buildRoute from "./src/routes/buildRoute.js";
 import imageGenRoute from "./src/routes/imageGenRoute.js";
 import errorMiddleware from "./src/middlewares/erros.js";
 import notFoundMiddleware from "./src/middlewares/notFoundMiddleware .js";
+import env from "./env.js";
+import { checkExternalServices } from "./healthcheck.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+
+await checkExternalServices();
+
+const PORT = env.PORT;
 
 const allowedOrigins = [
   "http://localhost:5173",
@@ -47,6 +52,6 @@ app.use("/api/generate", imageGenRoute);
 app.use(errorMiddleware);
 app.use(notFoundMiddleware);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(env.PORT, () => {
+  console.log(`Server running on port ${env.PORT}`);
 });
