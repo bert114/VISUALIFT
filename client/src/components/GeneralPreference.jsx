@@ -18,6 +18,7 @@ import Color from "./preference/Color.jsx";
 import ImageCount from "./preference/ImageCount.jsx";
 import useImageStore from "../store/useImageStorecopy.js";
 import useUIStore from "../store/useUIStore.js";
+import AspectRatio from "./preference/AspectRatio.jsx";
 
 function GenerationPreferences() {
   const { handleGenerate, isUploaded } = usePromptStore();
@@ -67,11 +68,15 @@ function GenerationPreferences() {
       </header>
 
       <div className="generation-preferences__body">
-        <ImagePrefPurpose />
+        <h3>Default settings</h3>
         <StyleModel />
+        <ImageCount />
+        <AspectRatio />
+
+        <h3>Optional settings</h3>
+        <ImagePrefPurpose />
         <Background />
         <Color />
-        <ImageCount />
 
         <button
           className="btn btn-primary"
@@ -79,7 +84,7 @@ function GenerationPreferences() {
           data-testid="generate-btn"
           disabled={!img || loading}
         >
-          Generate
+          Analyze image
         </button>
       </div>
     </section>

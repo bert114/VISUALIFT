@@ -62,14 +62,14 @@ function PromptReview() {
         </div>
 
         <div className="actions">
-          <button className="btn btn-secondary">Back to Upload</button>
-          <button className="btn btn-secondary">Regenerate Prompt</button>
+          <button className="btn btn-secondary">Change Reference</button>
+          <button className="btn btn-secondary">Improve Prompt Again</button>
           <button
             className="btn btn-primary"
             onClick={() => generate(userPref)}
             disabled={loading}
           >
-            Generate Images
+            Create 3 Images
           </button>
         </div>
       </div>
