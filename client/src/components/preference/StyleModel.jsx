@@ -16,7 +16,7 @@ function StyleModel() {
   };
 
   return (
-    <PreferenceBlock title="Style / Model">
+    <PreferenceBlock title="Image style">
       <div className="model-card-grid">
         {models.map((item) => (
           <button

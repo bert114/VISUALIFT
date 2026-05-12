@@ -21,10 +21,12 @@ import useUIStore from "../store/useUIStore.js";
 import AspectRatio from "./preference/AspectRatio.jsx";
 
 function GenerationPreferences() {
-  const { handleGenerate, isUploaded } = usePromptStore();
+  const [optionalOpen, setOptionalOpen] = useState(false);
+
+  const { handleGenerate } = usePromptStore();
   const { img } = useImageStore();
-  const { prompt } = usePromptStore();
   const { loading } = useUIStore();
+
   const {
     imagePurpose,
     model,
@@ -32,12 +34,6 @@ function GenerationPreferences() {
     color,
     aspectRatio,
     numberOfImages,
-    setImagePurpose,
-    setModel,
-    setBackground,
-    setColor,
-    setAspectRatio,
-    setNumberOfImages,
   } = selectedSettings();
 
   const userPreference = useMemo(
@@ -52,14 +48,6 @@ function GenerationPreferences() {
     [imagePurpose, model, background, color, aspectRatio, numberOfImages],
   );
 
-  // useEffect(() => {
-  //   return;
-  //   console.log(userPreference);
-  //   if (!prompt) return;
-
-  //   buildPrompt(prompt, userPreference);
-  // }, [prompt, userPreference]);
-
   return (
     <section className="generation-preferences">
       <header className="generation-preferences__header">
@@ -68,15 +56,43 @@ function GenerationPreferences() {
       </header>
 
       <div className="generation-preferences__body">
-        <h3>Default settings</h3>
-        <StyleModel />
-        <ImageCount />
-        <AspectRatio />
+        <div className="generation-preferences__group">
+          <StyleModel />
+          <AspectRatio />
+        </div>
 
-        <h3>Optional settings</h3>
-        <ImagePrefPurpose />
-        <Background />
-        <Color />
+        <div className="generation-preferences__group">
+          <button
+            type="button"
+            className="generation-preferences__section-toggle"
+            onClick={() => setOptionalOpen((current) => !current)}
+            aria-expanded={optionalOpen}
+            aria-controls="optional-generation-settings"
+          >
+            <span>
+              <strong>Advance settings</strong>
+              <small>Purpose, background, and color controls</small>
+            </span>
+
+            <span
+              className="generation-preferences__section-chevron"
+              aria-hidden="true"
+            >
+              ▾
+            </span>
+          </button>
+
+          {optionalOpen && (
+            <div
+              id="optional-generation-settings"
+              className="generation-preferences__optional"
+            >
+              <ImagePrefPurpose />
+              <Background />
+              <Color />
+            </div>
+          )}
+        </div>
 
         <button
           className="btn btn-primary"
@@ -84,7 +100,7 @@ function GenerationPreferences() {
           data-testid="generate-btn"
           disabled={!img || loading}
         >
-          Analyze image
+          {loading ? "Analyzing..." : "Analyze image"}
         </button>
       </div>
     </section>

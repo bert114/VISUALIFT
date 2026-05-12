@@ -12,7 +12,7 @@ const models = [
   {
     title: "Realistic",
     model: "img4",
-    desc: "Photorealistic images with strong detail and prompt adherence.",
+    desc: "Photo-like and detailed",
     icon: "📷",
     recommended: true,
     n: 4,
@@ -21,7 +21,7 @@ const models = [
   {
     title: "Illustration",
     model: "midjourney",
-    desc: "High-quality artistic and illustrated visual styles.",
+    desc: "Artistic and drawn",
     icon: "🎨",
     n: 1,
     capabilities: ["All Ratios", "Up to 1 Image", "I2I Editing"],
@@ -29,7 +29,7 @@ const models = [
   {
     title: "3D",
     model: "flux2-dev",
-    desc: "Depth-focused object scenes with strong structure and realism.",
+    desc: "Depth and object-focused",
     icon: "🧊",
     n: 1,
     capabilities: ["All Ratios", "Up to 1 Image", "I2I Editing"],
@@ -37,7 +37,7 @@ const models = [
   {
     title: "Anime",
     model: "qwen",
-    desc: "Anime, manga, characters, and stylized illustrations.",
+    desc: "Stylized anime look",
     icon: "✨",
     n: 4,
     capabilities: ["All Ratios", "Up to 4 Images", "I2I Editing"],
@@ -46,7 +46,7 @@ const models = [
   {
     title: "Minimalist",
     model: "flux-schnell",
-    desc: "Fast, clean, simple visuals for quick generation.",
+    desc: "Simple and clean",
     icon: "◻",
     n: 1,
     capabilities: ["All Ratios", "Up to 1 Image", "I2I Editing"],

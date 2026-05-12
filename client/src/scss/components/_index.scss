@@ -1,8 +1,8 @@
 @forward "./stepper.scss";
 @forward "./upload.scss";
+@use "./Upload/" as *;
 @forward "./loaders.scss";
 @forward "./toast.scss";
-@forward "./generalPref.scss";
 @forward "./reference.scss";
 @forward "./reviewGeneratedPrompt";
 @forward "./result";

@@ -1,5 +1,3 @@
-// OptionCard.jsx
-
 export default function OptionCard({ title, desc, active, onClick }) {
   return (
     <button
