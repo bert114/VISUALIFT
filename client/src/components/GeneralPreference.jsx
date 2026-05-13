@@ -26,7 +26,7 @@ function GenerationPreferences() {
 
   const { handleGenerate } = usePromptStore();
   const { img } = useImageStore();
-  const { loading } = useUIStore();
+  const { loading, state } = useUIStore();
 
   const {
     imagePurpose,
@@ -107,7 +107,7 @@ function GenerationPreferences() {
           className="btn btn-primary"
           onClick={handleGenerate}
           data-testid="generate-btn"
-          disabled={!img || loading}
+          disabled={state !== "complete"}
         >
           {loading && img ? "Analyzing..." : "Analyze image"}
         </button>

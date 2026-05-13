@@ -77,11 +77,11 @@ const useImageStore = create((set, get) => ({
   file: null,
 
   handleImage: async (e) => {
-    const { setLoading, showToast } = useUIStore.getState();
+    const { setLoading, showToast, setState } = useUIStore.getState();
     const { setIsUploaded } = usePromptStore.getState();
 
     set({ img: null, file: null });
-    setLoading(true);
+    setState("upload");
 
     try {
       const image = getImage(e);
@@ -103,13 +103,14 @@ const useImageStore = create((set, get) => ({
       // await waitforElement('[data-image="preview"]');
 
       setIsUploaded(true);
+      setState("complete");
       showToast("Image uploaded successfully", "success");
+
       e.target.value = "";
     } catch (error) {
       setIsUploaded(false);
+      setState("initial");
       showToast(error.message || "Failed to upload image", "error");
-    } finally {
-      setLoading(false);
     }
   },
 

@@ -2,9 +2,9 @@ import useUIStore from "../store/useUIStore.js";
 import Loaders from "./loaders.jsx";
 
 const UploadContent = ({ img, onRemove, inputRef }) => {
-  const { loading } = useUIStore();
+  const { loading, state } = useUIStore();
 
-  if (loading && !img) return <Loaders />;
+  if (state === "upload") return <Loaders />;
 
   if (!img) {
     return (
@@ -18,17 +18,17 @@ const UploadContent = ({ img, onRemove, inputRef }) => {
   }
 
   return (
-    <div className={loading ? "img-wrapper is-analyzing" : "img-wrapper"}>
+    <div className={`img-wrapper ${state}`}>
       <img src={img} alt="Preview" data-image="preview" />
 
-      {loading && (
+      {state === "analyzing" && (
         <div className="image-loader-overlay">
           <Loaders />
           <span>Analyzing image...</span>
         </div>
       )}
 
-      {!loading && (
+      {state === "initial" && (
         <button
           onClick={(e) => onRemove(e, inputRef)}
           className="preview-action preview-remove"

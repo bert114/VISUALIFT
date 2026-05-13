@@ -7,7 +7,7 @@ import useUIStore from "../store/useUIStore.js";
 import useImageStore from "../store/useImageStorecopy.js";
 
 function MainLayout() {
-  const { loading } = useUIStore();
+  const { loading, state } = useUIStore();
   const { img } = useImageStore();
 
   return (
@@ -15,7 +15,7 @@ function MainLayout() {
       <Stepper />
 
       <div className={`status-slot ${loading ? "is-visible" : ""}`}>
-        {loading && <ProcessingBanner status="processing" />}
+        {loading && <ProcessingBanner status={state} />}
       </div>
 
       <Flow />

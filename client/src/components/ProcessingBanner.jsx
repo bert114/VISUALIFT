@@ -1,42 +1,37 @@
 import React from "react";
+import BANNER_CONTENT from "../static/bannerContent.js";
 
-function ProcessingBanner({ status = "processing" }) {
-  const isReady = status === "ready";
+function ProcessingBanner({ state = "processing" }) {
+  const banner = BANNER_CONTENT[state] || BANNER_CONTENT.analyzing;
 
   return (
     <div
-      className={`processing-banner ${
-        isReady ? "processing-banner-ready" : ""
-      }`}
+      className={`processing-banner processing-banner--${state}`}
       role="status"
       aria-live="polite"
     >
       <div className="processing-content">
         <div className="processing-main">
           <div className="processing-icon" aria-hidden="true">
-            {isReady ? "✓" : "✦"}
+            {banner.icon}
           </div>
 
           <div>
-            <h3>{isReady ? "Prompt ready" : "Creating your prompt"}</h3>
-            <p>
-              {isReady
-                ? "Your editable prompt has been created."
-                : "Analyzing your reference image and applying your preferences."}
-            </p>
+            <h3>{banner.title}</h3>
+            <p>{banner.message}</p>
           </div>
         </div>
 
-        {!isReady && (
+        {banner.showProgress && (
           <div className="processing-status">
-            <span>Reading image details…</span>
-            <span>Detecting subject and background…</span>
-            <span>Preparing editable prompt…</span>
+            {banner.statuses.map((statusText) => (
+              <span key={statusText}>{statusText}</span>
+            ))}
           </div>
         )}
       </div>
 
-      {!isReady && (
+      {banner.showProgress && (
         <div className="processing-progress" aria-hidden="true">
           <span />
         </div>

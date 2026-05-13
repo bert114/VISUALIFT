@@ -52,10 +52,11 @@ Checkerboard background. Use a #00E5FF color palette.`,
   setGeneratedPrompt: (generatedPrompt) => set({ generatedPrompt }),
 
   handleGenerate: async () => {
-    const { setLoading, showToast } = useUIStore.getState();
+    const { setLoading, showToast, setState } = useUIStore.getState();
     const { setUserPref } = selectedSettings.getState();
 
     setLoading(true);
+    setState("analyzing");
     console.log("click");
 
     try {
@@ -78,6 +79,7 @@ Checkerboard background. Use a #00E5FF color palette.`,
       showToast(error.message || "Failed to build prompt", "error");
     } finally {
       setLoading(false);
+      setState("initial");
     }
   },
 
