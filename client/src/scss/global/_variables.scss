@@ -8,8 +8,9 @@
   //--bg-dark: var(--color-primary);
   --bg-dark: hsl(0, 0%, 4%);
   --bg: hsl(0, 0%, 8%);
-  --bg-light: hsl(0, 0%, 16%);
+  --bg-light: hsl(0, 0%, 15%);
   --bg-light-hover: hsl(0, 0%, 30%);
+  --bg-lighter: var(--bg-light-hover);
 
   --text: hsl(0, 0%, 95%);
   --text-muted: hsl(0, 0%, 70%);
@@ -129,6 +130,7 @@ body {
 :root {
   --gradientttt: linear-gradient(0deg, var(--bg), var(--bg-light));
   --gradientttt-hover: linear-gradient(0deg, var(--bg), var(--bg-light-hover));
+  --gradient-active: linear-gradient(0deg, var(--bg), var(--bg-lighter));
   --option-hover: var(--bg-light-hover);
   --border-card: 1px solid hsl(0, 0%, 30%);
 

@@ -1,3 +1,8 @@
+:root {
+  // --gradientttt-box: linear-gradient(0deg, hsl(0, 0%, 0%), #88d0ff);
+  // --gradientttt-box-hover: linear-gradient(0deg, var(--bg), #bae2ff);
+}
+
 .generation-preferences {
   width: 100%;
   max-width: 760px;
@@ -147,7 +152,7 @@
   }
 
   &--active {
-    background: rgba(0, 102, 255, 0.22);
+    background: var(--gradient-active);
     border-color: var(--color-accent);
     box-shadow: var(--shadow-active);
   }

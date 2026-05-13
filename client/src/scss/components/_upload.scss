@@ -12,8 +12,7 @@
 
   border: var(--border-card);
   box-shadow: var(--shadow-m);
-  background: var(--gradientttt);
-
+  background: linear-gradient(0deg, var(--bg), var(--bg-light));
   /*
   &::before {
     content: "";
@@ -62,7 +61,7 @@
   position: relative;
   overflow: hidden;
   transition: var(--transition-fast);
-  background-color: var(--bg-light);
+  background-color: var(--bg-lighter);
   margin-top: var(--component-group-gap);
 
   color: var(--color-text);
