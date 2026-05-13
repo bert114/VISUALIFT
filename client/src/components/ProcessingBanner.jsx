@@ -1,7 +1,11 @@
 import React from "react";
 import BANNER_CONTENT from "../static/bannerContent.js";
+import useUIStore from "../store/useUIStore.js";
 
-function ProcessingBanner({ state = "processing" }) {
+function ProcessingBanner() {
+  const { state } = useUIStore();
+
+  console.log("Rendering ProcessingBanner with state:", state);
   const banner = BANNER_CONTENT[state] || BANNER_CONTENT.analyzing;
 
   return (

@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 const useUIStore = create((set) => ({
   loading: false,
-  state: "analyzing", // uploaded, analyzing, review, generating, complete, error
+  state: "initial", // uploaded, analyzing, review, generating, complete, error
   toast: {
     message: "",
     type: "success",

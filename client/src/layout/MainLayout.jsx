@@ -15,7 +15,7 @@ function MainLayout() {
       <Stepper />
 
       <div className={`status-slot ${loading ? "is-visible" : ""}`}>
-        {loading && <ProcessingBanner status={state} />}
+        {loading && <ProcessingBanner />}
       </div>
 
       <Flow />
