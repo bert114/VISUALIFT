@@ -5,9 +5,19 @@
   --color-bg: #1e1e1e;
   // --color-surface: rgba(255, 255, 255, 0.06);
 
-  --bg-dark: oklch(0.1 0.025 264);
-  --bg: oklch(0.15 0.025 264);
-  --bg-light: oklch(0.2 0.025 264);
+  //--bg-dark: var(--color-primary);
+  --bg-dark: hsl(0, 0%, 4%);
+  --bg: hsl(0, 0%, 8%);
+  --bg-light: hsl(0, 0%, 16%);
+
+  --text: hsl(0, 0%, 95%);
+  --text-muted: hsl(0, 0%, 70%);
+
+  //--bg-light: var(--color-primary);
+
+  // --bg-light: hsl(0, 0%, 100%);
+  // --bg: hsl(0, 0%, 95%);
+  // --bg-dark: hsl(0, 0%, 90%);
 
   --color-surface: var(--bg);
 
@@ -112,4 +122,8 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg-dark);
   color: var(--color-text);
+}
+
+:root {
+  --gradientttt: linear-gradient(0deg, var(--bg), var(--bg-light));
 }
