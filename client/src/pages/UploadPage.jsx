@@ -30,7 +30,7 @@ function UploadPage() {
           <div className="upload-preferences-grid">
             <div className="upload-column">
               <h2>Upload reference</h2>
-              <p className="muted">Start with one JPG, PNG, or WEBP image.</p>
+              <p>Start with one JPG, PNG, or WEBP image.</p>
 
               <label className="upload-box" id="uploadBox">
                 <input

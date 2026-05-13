@@ -6,29 +6,12 @@
   width: min(980px, 100%);
   margin: 0 auto;
   border-radius: var(--radius-xl);
-  padding: var(--space-5);
+  padding: var(--inner-card-padding);
   position: relative;
   overflow: hidden;
 
+  border: var(--border-card);
   box-shadow: var(--shadow-m);
-
-  // background:
-  //   radial-gradient(
-  //     1200px 600px at 20% 0%,
-  //     rgba(0, 102, 255, 0.12),
-  //     transparent 55%
-  //   ),
-  //   radial-gradient(
-  //     900px 500px at 95% 10%,
-  //     rgba(0, 255, 255, 0.1),
-  //     transparent 52%
-  //   ),
-  //   var(--color-bg);
-
-  border: var(--border-subtle);
-  box-shadow:
-    var(--shadow-card),
-    inset 0 0 0 1px rgba(0, 255, 255, 0.06);
   background: var(--gradientttt);
 
   /*
@@ -61,13 +44,6 @@
 }
 
 .upload-column {
-  h2 {
-    margin: 0 0 var(--space-2);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-heading);
-    color: var(--color-text);
-  }
-
   .muted {
     margin: 0 0 var(--space-4);
     font-size: var(--font-size-sm);
@@ -87,6 +63,7 @@
   overflow: hidden;
   transition: var(--transition-fast);
   background-color: var(--bg-light);
+  margin-top: var(--component-group-gap);
 
   color: var(--color-text);
   border: 1px dashed rgba(0, 255, 255, 0.35);

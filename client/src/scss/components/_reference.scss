@@ -9,7 +9,7 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-s);
   //background: linear-gradient(0deg, var(--bg), var(--bg-light));
-  border: 1px solid hsl(0, 0%, 30%);
+  border: var(--border-card);
   > * {
     flex: 1;
   }

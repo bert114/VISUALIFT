@@ -9,6 +9,7 @@
   --bg-dark: hsl(0, 0%, 4%);
   --bg: hsl(0, 0%, 8%);
   --bg-light: hsl(0, 0%, 16%);
+  --bg-light-hover: hsl(0, 0%, 30%);
 
   --text: hsl(0, 0%, 95%);
   --text-muted: hsl(0, 0%, 70%);
@@ -122,8 +123,41 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg-dark);
   color: var(--color-text);
+  font-size: var(--font-size-md);
 }
 
 :root {
   --gradientttt: linear-gradient(0deg, var(--bg), var(--bg-light));
+  --gradientttt-hover: linear-gradient(0deg, var(--bg), var(--bg-light-hover));
+  --option-hover: var(--bg-light-hover);
+  --border-card: 1px solid hsl(0, 0%, 30%);
+
+  --title-size: var(--font-size-md);
+  --subtitle: var(--font-size-sm);
+
+  --heading: var(--font-size-lg);
+  --title-bottom-spacing: var(--space-2);
+
+  --component-group-gap: var(--space-6);
+  --inner-card-padding: var(--space-5);
+}
+
+h3 {
+  font-size: var(--title-size);
+}
+
+h2 {
+  font-size: var(--heading);
+  letter-spacing: -0.03em;
+
+  margin-bottom: var(--title-bottom-spacing) !important;
+}
+
+h4 {
+  font-size: var(--subtitle);
+}
+
+p {
+  margin: 6px 0 0;
+  color: var(--color-text-muted);
 }
