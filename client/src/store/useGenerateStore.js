@@ -19,7 +19,6 @@ const useGenerateStore = create((set) => ({
     console.log(newState);
 
     try {
-      setState("complete");
       const data = await sendToInfip(payload);
 
       set({ result: data });
@@ -27,6 +26,7 @@ const useGenerateStore = create((set) => ({
 
       setStep(3);
 
+      setState("complete");
       return data;
     } catch (error) {
       set({ error: error.message });
