@@ -4,11 +4,13 @@ import { models } from "../../static/constantfile.js";
 import { usePreferenceActions } from "../../hooks/usePreferenceAction.jsx";
 import { selectedSettings } from "../../store/usePromptStore.js";
 import { getNumber } from "../../helper/helper.js";
+import useImageStore from "../../store/useImageStorecopy.js";
 
 function StyleModel() {
   const action = usePreferenceActions();
   const [selectedModel, setSelectedModel] = useState("img4");
   const { setUserPref } = selectedSettings();
+  const { loading } = useImageStore();
 
   const handleImageCount = (model) => {
     setUserPref("model", model);

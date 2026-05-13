@@ -292,3 +292,19 @@
     grid-template-columns: 1fr;
   }
 }
+
+.generation-preferences.is-processing .generation-preferences__group {
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+
+  .selected-summary {
+    display: flex;
+  }
+}
+
+.generation-preferences.is-processing {
+  .selected-summary {
+    display: flex;
+  }
+}

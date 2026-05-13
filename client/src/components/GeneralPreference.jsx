@@ -19,6 +19,7 @@ import ImageCount from "./preference/ImageCount.jsx";
 import useImageStore from "../store/useImageStorecopy.js";
 import useUIStore from "../store/useUIStore.js";
 import AspectRatio from "./preference/AspectRatio.jsx";
+import SelectedSummary from "./preference/SelectedSummary.jsx";
 
 function GenerationPreferences() {
   const [optionalOpen, setOptionalOpen] = useState(false);
@@ -49,10 +50,16 @@ function GenerationPreferences() {
   );
 
   return (
-    <section className="generation-preferences">
+    <section
+      className={`generation-preferences ${loading && img ? "is-processing" : ""}`}
+    >
       <header className="generation-preferences__header">
         <h2>Generation Preferences</h2>
-        <p>Configure how the AI should generate your image.</p>
+        <p>
+          {loading && img
+            ? "Applying your selected preferences."
+            : "Configure how the AI should generate your image."}
+        </p>
       </header>
 
       <div className="generation-preferences__body">
@@ -94,13 +101,15 @@ function GenerationPreferences() {
           )}
         </div>
 
+        <SelectedSummary />
+
         <button
           className="btn btn-primary"
           onClick={handleGenerate}
           data-testid="generate-btn"
           disabled={!img || loading}
         >
-          {loading ? "Analyzing..." : "Analyze image"}
+          {loading && img ? "Analyzing..." : "Analyze image"}
         </button>
       </div>
     </section>

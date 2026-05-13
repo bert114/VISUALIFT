@@ -55,12 +55,12 @@ export async function checkExternalServices() {
     await checkOllama();
     await checkGemini();
     await checkCloudinary();
-    //await checkInfip();
+    await checkInfip();
 
     console.log("All external services OK");
   } catch (error) {
     console.error("Server health check failed:");
     console.error(error.message);
-    process.exit(1);
+    //process.exit(1);
   }
 }

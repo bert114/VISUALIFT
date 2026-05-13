@@ -12,28 +12,7 @@
 
   border: var(--border-card);
   box-shadow: var(--shadow-m);
-  background: linear-gradient(0deg, var(--bg), var(--bg-light));
-  /*
-  &::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    background:
-      radial-gradient(
-        800px 240px at 15% 15%,
-        rgba(0, 255, 255, 0.14),
-        transparent 55%
-      ),
-      radial-gradient(
-        700px 260px at 85% 35%,
-        rgba(0, 102, 255, 0.14),
-        transparent 55%
-      );
-    opacity: 0.65;
-    pointer-events: none;
-  }
-
-  */
+  background: var(--gradient);
 }
 
 .upload-preferences-grid {
@@ -61,7 +40,7 @@
   position: relative;
   overflow: hidden;
   transition: var(--transition-fast);
-  background-color: var(--bg-lighter);
+  background-color: var(--bg-light);
   margin-top: var(--component-group-gap);
 
   color: var(--color-text);

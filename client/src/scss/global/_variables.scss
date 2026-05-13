@@ -91,16 +91,23 @@
   --shadow-inner:
     0 0 0 6px rgba(15, 17, 21, 0.78), 0 0 26px rgba(0, 255, 255, 0.1);
 
+  --clr1: rgba(0, 255, 255, 0.14);
+  --clr2: rgba(0, 102, 255, 0.14);
   --gradient:
     radial-gradient(
-      800px 240px at 15% 15%,
-      rgba(0, 255, 255, 0.14),
-      transparent 55%
+      700px 220px at 12% 10%,
+      rgba(0, 255, 255, 0.16),
+      transparent 58%
     ),
     radial-gradient(
-      700px 260px at 85% 35%,
-      rgba(0, 102, 255, 0.14),
-      transparent 55%
+      520px 220px at 88% 32%,
+      rgba(0, 102, 255, 0.1),
+      transparent 60%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.01)
     );
 }
 

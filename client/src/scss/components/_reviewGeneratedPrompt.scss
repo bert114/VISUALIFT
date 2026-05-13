@@ -1,97 +1,22 @@
-/* ================================
-   Prompt Review Section
-   Tech Innovation Theme
-   Uses your new :root tokens
-================================ */
-
 .prompt-review {
   width: 100%;
   min-height: 100vh;
-  padding: var(--space-8);
-  color: var(--color-text);
-  font-family: var(--font-body);
   max-width: 1200px;
   margin-inline: auto;
-}
+  padding: var(--space-8);
+  padding-top: var(--space-4);
 
-.prompt-review .review-shell {
-  width: min(100%, 1200px);
-  margin: 0 auto;
-  padding: var(--space-6);
-  position: relative;
-  overflow: hidden;
-
-  background: var(--color-surface);
-
-  border: var(--border-subtle);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-m);
-}
-
-.prompt-review .review-shell::before {
-  //   content: "";
-  //   position: absolute;
-  //   inset: 0;
-  //   pointer-events: none;
-
-  //   background:
-  //     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-  //     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-
-  //   background-size: 44px 44px;
-  //   mask-image: linear-gradient(to bottom, black, transparent 86%);
-}
-
-.prompt-review .review-shell > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Back link */
-
-.prompt-review .back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-
-  color: var(--color-accent);
-  font-family: var(--font-heading);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-  text-decoration: none;
-
-  transition:
-    color var(--transition-base),
-    transform var(--transition-base);
-}
-
-.prompt-review .back-link:hover {
   color: var(--color-text);
-  transform: translateX(-2px);
+  font-family: var(--font-body);
 }
 
-/* Header */
-
-.prompt-review .review-header {
+.prompt-review .review-page-header {
   max-width: 720px;
-  margin-top: var(--space-10);
+  margin-bottom: var(--space-6);
 }
 
-.prompt-review .eyebrow {
-  margin: 0 0 var(--space-3);
-
-  color: var(--color-accent);
-  font-family: var(--font-heading);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-}
-
-.prompt-review .review-header h1 {
-  margin: 0;
+.prompt-review .review-page-header h1 {
+  margin: 0 0 var(--space-2);
 
   color: var(--color-text);
   font-family: var(--font-heading);
@@ -101,78 +26,129 @@
   letter-spacing: -0.03em;
 }
 
-.prompt-review .review-header p:last-child {
-  margin: var(--space-3) 0 0;
+.prompt-review .review-page-header p {
+  margin: 0;
 
   color: var(--color-text-muted);
   font-size: var(--font-size-md);
-  font-weight: var(--font-weight-regular);
   line-height: var(--line-height-normal);
 }
 
-/* Layout */
+.prompt-review .review-shell {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  padding: var(--space-6);
+  position: relative;
+  overflow: hidden;
+
+  background: var(--bg);
+
+  border: var(--border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.prompt-review .review-shell > * {
+  position: relative;
+  z-index: 1;
+}
 
 .prompt-review .review-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-  gap: var(--space-6);
-  margin-top: var(--space-10);
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.35fr);
+  gap: var(--component-group-gap);
+  align-items: stretch;
 }
 
 /* Cards */
 
 .prompt-review .review-card {
   min-height: 430px;
-  padding: var(--space-6);
+  padding: var(--inner-card-padding);
 
   display: flex;
   flex-direction: column;
 
-  border: var(--border-subtle);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-m);
+  border-radius: var(--radius-lg);
 
   transition:
+    background var(--transition-base),
     border-color var(--transition-base),
     box-shadow var(--transition-base),
     transform var(--transition-base);
 }
 
-.prompt-review .review-card:hover {
-  border-color: rgba(0, 255, 255, 0.3);
-  box-shadow: var(--shadow-m), var(--glow-cyan);
-  transform: translateY(-1px);
-}
-
-.prompt-review .review-card h2 {
-  margin: 0 0 var(--space-4);
-
-  color: var(--color-text);
-  font-family: var(--font-heading);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
+.prompt-review .image-card {
+  background: var(--bg);
+  border: var(--border-subtle);
 }
 
 .prompt-review .prompt-card {
-  box-shadow: var(--gradient);
-  position: relative;
-  overflow: hidden;
+  background: var(--gradient);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-s);
+}
 
-  &::after {
-    content: "";
-    inset: 0;
-    position: absolute;
-    background: var(--gradient);
-    pointer-events: none;
-  }
+.prompt-review .review-card:hover {
+  border-color: var(--color-border-active);
+  transform: translateY(-1px);
+}
+
+.prompt-review .card-heading {
+  margin-bottom: var(--space-4);
+}
+
+.prompt-review .card-heading h2 {
+  margin: 0 0 var(--space-2);
+
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.03em;
+}
+
+.prompt-review .card-heading p {
+  margin: 0;
+
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+}
+
+.prompt-review .prompt-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.prompt-review .edit-badge {
+  flex: 0 0 auto;
+  padding: var(--space-1) var(--space-3);
+
+  color: var(--color-accent);
+  background: var(--color-surface-hover);
+
+  border: 1px solid rgba(0, 255, 255, 0.28);
+  border-radius: var(--radius-pill);
+
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* Image preview */
 
 .prompt-review .image-preview {
   flex: 1;
-  min-height: 320px;
+  min-height: 300px;
 
   display: grid;
   place-items: center;
@@ -185,35 +161,55 @@
   text-align: center;
   letter-spacing: 0.04em;
 
-  background:
-    radial-gradient(circle at center, rgba(0, 255, 255, 0.08), transparent 38%),
-    rgba(255, 255, 255, 0.035);
-
-  border: 1px dashed rgba(0, 255, 255, 0.34);
+  background: var(--bg-light);
+  border: 1px dashed var(--color-border-active);
   border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-inner);
 }
 
 .prompt-review .image-preview img {
   width: 100%;
   height: 100%;
-  max-height: 360px;
+  max-height: 340px;
+
   object-fit: contain;
   border-radius: var(--radius-xl);
 }
 
-/* Prompt input */
+.prompt-review .empty-preview {
+  display: grid;
+  gap: var(--space-2);
+  place-items: center;
+  padding: var(--space-5);
+
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.prompt-review .empty-preview strong {
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+}
+
+.prompt-review .empty-preview span {
+  color: var(--color-text-soft);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}
 
 .prompt-review .prompt-input {
   flex: 1;
   width: 100%;
-  min-height: 320px;
+  min-height: 340px;
   padding: var(--space-5);
 
   resize: vertical;
   outline: none;
 
   color: var(--color-text);
-  background: var(--bg-light);
+  background: var(--bg-lighter);
 
   border: var(--border-subtle);
   border-radius: var(--radius-md);
@@ -234,18 +230,32 @@
 }
 
 .prompt-review .prompt-input:focus {
-  background: (var(--bg-light));
+  background: var(--bg-lighter);
   border-color: var(--color-border-active);
   box-shadow: var(--shadow-active);
 }
 
-/* Error */
+.prompt-review .prompt-helper {
+  margin: var(--space-3) 0 0;
+
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+}
+
+.prompt-review .prompt-helper strong {
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+}
 
 .prompt-review .error-box {
   margin-top: var(--space-4);
   padding: var(--space-4);
 
-  color: #ffd8dc;
+  color: var(--color-text);
   background: rgba(212, 87, 87, 0.13);
 
   border: 1px solid rgba(212, 87, 87, 0.35);
@@ -257,6 +267,7 @@
 
 .prompt-review .error-box strong {
   display: block;
+
   font-family: var(--font-heading);
   font-weight: var(--font-weight-bold);
 }
@@ -264,16 +275,37 @@
 .prompt-review .error-box span {
   display: block;
   margin-top: var(--space-2);
+
   color: var(--color-text-muted);
 }
 
-/* Actions */
-
-.prompt-review .actions {
+.prompt-review .card-actions {
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  margin-top: var(--space-10);
+  margin-top: var(--space-5);
+}
+
+.prompt-review .image-card .card-actions {
+  justify-content: flex-start;
+}
+
+.prompt-review .prompt-actions {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.prompt-review .refine-group {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.prompt-review .refine-group p {
+  margin: 0;
+
+  color: var(--color-text-soft);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
 }
 
 .prompt-review .btn {
@@ -282,9 +314,12 @@
   padding: 0 var(--space-6);
 
   border-radius: var(--radius-pill);
+  border: var(--border-subtle);
+
   font-family: var(--font-heading);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
 
   cursor: pointer;
 
@@ -293,10 +328,43 @@
     color var(--transition-base),
     border-color var(--transition-base),
     box-shadow var(--transition-base),
-    transform var(--transition-base);
+    transform var(--transition-base),
+    opacity var(--transition-base);
 }
 
-/* Responsive */
+.prompt-review .btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.prompt-review .btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.prompt-review .btn-secondary {
+  color: var(--color-text);
+  background: var(--gradientttt);
+  border-color: var(--color-border);
+}
+
+.prompt-review .btn-secondary:hover:not(:disabled) {
+  background: var(--gradientttt-hover);
+  border-color: var(--color-border-active);
+}
+
+.prompt-review .btn-primary {
+  color: var(--bg-dark);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-active);
+}
+
+.prompt-review .btn-primary:hover:not(:disabled) {
+  color: var(--color-text);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: var(--glow-cyan);
+}
 
 @media (max-width: 900px) {
   .prompt-review {
@@ -320,16 +388,19 @@
     min-height: 260px;
   }
 
-  .prompt-review .actions {
+  .prompt-review .card-actions,
+  .prompt-review .prompt-actions {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .prompt-review .btn,
-  .prompt-review .btn-primary {
+  .prompt-review .btn {
     width: 100%;
     min-width: 0;
-    margin-left: 0;
+  }
+
+  .prompt-review .refine-group {
+    width: 100%;
   }
 }
 
@@ -338,18 +409,17 @@
     padding: var(--space-4);
   }
 
+  .prompt-review .review-page-header {
+    margin-bottom: var(--space-5);
+  }
+
   .prompt-review .review-shell {
     padding: var(--space-5);
     border-radius: var(--radius-xl);
   }
 
-  .prompt-review .review-header {
-    margin-top: var(--space-6);
-  }
-
   .prompt-review .review-grid {
     gap: var(--space-4);
-    margin-top: var(--space-8);
   }
 
   .prompt-review .review-card {
@@ -357,12 +427,21 @@
     border-radius: var(--radius-xl);
   }
 
+  .prompt-review .prompt-heading {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .prompt-review .edit-badge {
+    width: fit-content;
+  }
+
   .prompt-review .image-preview,
   .prompt-review .prompt-input {
     border-radius: var(--radius-lg);
   }
 
-  .prompt-review .actions {
-    margin-top: var(--space-8);
+  .prompt-review .card-actions {
+    margin-top: var(--space-4);
   }
 }
