@@ -51,7 +51,7 @@ Checkerboard background. Use a #00E5FF color palette.`,
   setIsUploaded: (status) => set({ isUploaded: status }),
   setGeneratedPrompt: (generatedPrompt) => set({ generatedPrompt }),
 
-  handleGenerate: async () => {
+  handleGenerate: async (state = null, steps = null) => {
     const { setLoading, showToast, setState } = useUIStore.getState();
     const { setUserPref } = selectedSettings.getState();
 
@@ -62,6 +62,10 @@ Checkerboard background. Use a #00E5FF color palette.`,
     try {
       showToast("Building prompt...", "warning");
 
+      if (!useImageStore.getState().img) {
+        throw new Error("No image uploaded");
+      }
+
       const describeImage = await describeImgg();
       setUserPref("describeImage", describeImage);
 
@@ -71,7 +75,7 @@ Checkerboard background. Use a #00E5FF color palette.`,
       console.log(generatedPrompt);
       set({
         generatedPrompt,
-        step: 2,
+        step: steps || 2,
       });
 
       showToast("Done", "success");

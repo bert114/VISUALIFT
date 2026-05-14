@@ -10,7 +10,8 @@ import useUIStore from "../store/useUIStore.js";
 
 function PromptReview() {
   const { img } = useImageStore();
-  const { generatedPrompt, setGeneratedPrompt } = usePromptStore();
+  const { generatedPrompt, setGeneratedPrompt, setStep, handleGenerate } =
+    usePromptStore();
   const { userPref } = selectedSettings();
 
   const { sendReq } = requestStore();
@@ -45,7 +46,11 @@ function PromptReview() {
             </div>
 
             <div className="card-actions">
-              <button className="btn btn-secondary" disabled={loading}>
+              <button
+                onClick={() => setStep(1)}
+                className="btn btn-secondary"
+                disabled={loading}
+              >
                 Change Reference
               </button>
             </div>
@@ -86,7 +91,11 @@ function PromptReview() {
 
             <div className="card-actions prompt-actions">
               <div className="refine-group">
-                <button className="btn btn-secondary" disabled={loading}>
+                <button
+                  onClick={handleGenerate}
+                  className="btn btn-secondary"
+                  disabled={loading}
+                >
                   Refine Prompt
                 </button>
                 <p>Uses your current prompt and preferences.</p>

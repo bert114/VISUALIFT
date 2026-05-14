@@ -11,6 +11,8 @@ const useGenerateStore = create((set) => ({
     const { setLoading, showToast, setState, state } = useUIStore.getState();
     const { setStep } = usePromptStore.getState();
 
+    console.log("Generating with payload:", payload);
+
     setState("generating");
     setLoading(true);
     set({ error: null });

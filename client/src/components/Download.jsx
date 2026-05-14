@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Download } from "lucide-react";
-import usePromptStore from "../store/usePromptStore.js";
+import usePromptStore, { selectedSettings } from "../store/usePromptStore.js";
+import useGenerateStore from "../store/useGenerateStore.js";
+import { downloadImageUrl } from "../helper/util.js";
 
 const galleryItems = [
   {
@@ -43,7 +45,10 @@ const galleryItems = [
 
 export default function GalleryReviewLayout() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const { handleReset } = usePromptStore();
+  const { handleReset, handleGenerate, generatedPrompt } = usePromptStore();
+
+  const { userPref } = selectedSettings();
+  const { generate } = useGenerateStore();
 
   const activeItem = galleryItems[activeIndex];
 
@@ -59,11 +64,12 @@ export default function GalleryReviewLayout() {
     );
   };
 
-  const handleDownload = (imageUrl) => {
-    const link = document.createElement("a");
-    link.href = imageUrl;
-    link.download = imageUrl.split("/").pop() || "generated-image";
-    link.click();
+  const handleDownload = async (imageUrl, isAll = null) => {
+    try {
+      await downloadImageUrl(imageUrl, isAll);
+    } catch (error) {
+      console.error("Download failed:", error);
+    }
   };
 
   return (
@@ -173,6 +179,7 @@ export default function GalleryReviewLayout() {
             <button
               className="image-details__action image-details__action--secondary"
               type="button"
+              onClick={() => generate(userPref)}
             >
               Regenerate
             </button>
@@ -188,6 +195,7 @@ export default function GalleryReviewLayout() {
             <button
               className="image-details__action image-details__action--primary"
               type="button"
+              onClick={() => handleDownload(activeItem.image, true)}
             >
               <Download size={16} />
               Download all

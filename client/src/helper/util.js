@@ -79,3 +79,27 @@ export const checkLoaded = (images, cb) => {
     image.src = img.url;
   });
 };
+
+export const downloadImageUrl = async (url, bool) => {
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const urls = Array.isArray(url) ? url : [url];
+
+  for (const url of urls) {
+    const res = await fetch(url, { mode: "cors" });
+    if (!res.ok) throw new Error(`Failed to fetch image: ${url}`);
+
+    const blobUrl = URL.createObjectURL(await res.blob());
+    const link = document.createElement("a");
+
+    link.href = blobUrl;
+    link.download =
+      url.split("/").pop()?.split("?")[0] || `image-${Date.now()}.jpg`;
+
+    document.body.append(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(blobUrl);
+    await sleep(300);
+  }
+};
