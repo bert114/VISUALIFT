@@ -39,8 +39,6 @@ app.get("/", (req, res) => {
   res.json({ message: "Backend is running" });
 });
 
-connectDB();
-
 app.use("/api/images", imgRoute);
 app.use("/api/user", uploadRoute);
 app.use("/api/vision", visionRoute);

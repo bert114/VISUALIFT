@@ -1,15 +1,19 @@
 import { v2 as cloudinary } from "cloudinary";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import env from "./env.js";
+import connectDB from "./src/config/db.js";
 
 async function checkOllama() {
-  const response = await fetch(`${env.OLLAMA_URL}/api/tags`);
+  try {
+    const response = await fetch(`${env.OLLAMA_URL}/api/tags`);
+    if (!response.ok) {
+      throw new Error(`Ollama failed with status ${response.status}`);
+    }
 
-  if (!response.ok) {
-    throw new Error(`Ollama failed with status ${response.status}`);
+    console.log("Ollama OK");
+  } catch (error) {
+    throw new Error(`Ollama connection failed: ${error.message}`);
   }
-
-  console.log("Ollama OK");
 }
 
 async function checkGemini() {
@@ -50,17 +54,33 @@ async function checkInfip() {
   console.log("INFIP OK");
 }
 
+async function checkMongoDb() {
+  const response = await fetch(env.INFIP_BASE_URL, {
+    headers: {
+      Authorization: `Bearer ${env.INFIP_API_KEY}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`INFIP failed with status ${response.status}`);
+  }
+
+  console.log("INFIP OK");
+}
+
 export async function checkExternalServices() {
   try {
+    await connectDB();
     await checkOllama();
     await checkGemini();
     await checkCloudinary();
     await checkInfip();
-
     console.log("All external services OK");
   } catch (error) {
+    console.log("Main error:", error.message);
+    console.log("Error code:", error.code);
     console.error("Server health check failed:");
-    console.error(error.message);
+
     //process.exit(1);
   }
 }
