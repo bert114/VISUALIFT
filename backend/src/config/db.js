@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
 import env from "../../env.js";
+import Upload from "../model/uploadModel.js";
 
 const connectDB = async () => {
   try {

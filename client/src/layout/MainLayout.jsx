@@ -5,7 +5,13 @@ import Flow from "../idk/Flow";
 import ProcessingBanner from "../components/ProcessingBanner";
 import useUIStore from "../store/useUIStore.js";
 import useImageStore from "../store/useImageStorecopy.js";
-import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/react";
+import {
+  Show,
+  SignInButton,
+  SignOutButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/react";
 
 function MainLayout() {
   const { loading, state } = useUIStore();
@@ -22,6 +28,7 @@ function MainLayout() {
         </Show>
         <Show when="signed-in">
           <UserButton />
+          <SignOutButton />
         </Show>
       </header>
       <Stepper />
