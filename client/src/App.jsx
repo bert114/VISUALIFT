@@ -24,6 +24,7 @@ function App() {
   const { getToken } = useAuth();
   const { setCurrentUser } = userGenerateStore();
   const { setUserPref, userPref } = selectedSettings();
+  const [remaining, setRemaining] = useState(null);
 
   useEffect(() => {
     if (!user) return;
@@ -31,9 +32,11 @@ function App() {
       const token = await getToken();
       const { id, role = "user" } = user;
 
-      console.log("test:", id);
-      await getRemaining({ userId: id });
+      const { remaining, resetTimeRemaining } = await getRemaining({
+        userId: id,
+      });
 
+      setUserPref("remaining", remaining);
       setUserPref("userId", user.id);
     };
 

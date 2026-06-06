@@ -2,6 +2,7 @@ import { create } from "zustand";
 import sendToInfip from "../helper/infip.js";
 import useUIStore from "./useUIStore.js";
 import usePromptStore from "./usePromptStore.js";
+import { isAllowed } from "../helper/limit.js";
 
 const useGenerateStore = create((set) => ({
   result: null,
@@ -10,6 +11,14 @@ const useGenerateStore = create((set) => ({
   generate: async (payload) => {
     const { setLoading, showToast, setState, state } = useUIStore.getState();
     const { setStep } = usePromptStore.getState();
+
+    if (!isAllowed()) {
+      showToast(
+        "You have reached your generation limit. Please try again later.",
+        "error",
+      );
+      return;
+    }
 
     console.log("Generating with payload:", payload);
 
