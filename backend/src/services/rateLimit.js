@@ -1,9 +1,18 @@
+import User from "../model/userModel.js";
+import throwError from "../utils/throwErrors.js";
 import { getUserById } from "../utils/user.js";
+import { createUser } from "./userServices.js";
 
 async function checkRemaining({ userId }) {
   const today = null;
 
   const user = await getUserById(userId);
+
+  if (!user) {
+    const newUser = await createUser({ userId });
+
+    return newUser;
+  }
 
   const { lastReset, remaining } = user;
 
@@ -25,17 +34,13 @@ async function getCountByUserId({ userId }) {
 async function remainingTime(lastResetTime) {
   const now = new Date();
 
-  // Fix: Convert string timestamp to proper Date if needed
   let lastReset = null;
 
   if (lastResetTime) {
-    // Check if it's a timestamp string like '86400000'
     if (typeof lastResetTime === "string" && !isNaN(Number(lastResetTime))) {
-      // If it's a timestamp, create a date by subtracting from now
       const msAgo = Number(lastResetTime);
       lastReset = new Date(now.getTime() - msAgo);
     } else {
-      // Otherwise treat as date string
       lastReset = new Date(lastResetTime);
     }
   }
@@ -58,7 +63,6 @@ async function remainingTime(lastResetTime) {
     if (timeSinceLastReset >= twentyFourHours) {
       shouldReset = true;
     } else {
-      // Calculate remaining time
       const remainingMs = twentyFourHours - timeSinceLastReset;
       resetTimeRemaining = {
         hours: Math.floor(remainingMs / (60 * 60 * 1000)),
@@ -69,7 +73,6 @@ async function remainingTime(lastResetTime) {
     }
   }
 
-  // Reset if needed
   if (shouldReset) {
     const DEFAULT_COUNT = 10;
     const newResetTime = new Date();
@@ -90,4 +93,29 @@ async function remainingTime(lastResetTime) {
   return { resetTimeRemaining, shouldReset };
 }
 
-export { checkRemaining };
+const atomicReserve = async ({ userId, n = 1 }) => {
+  const user = await User.findById(userId);
+
+  const currentRemaining = parseInt(user.remaining);
+
+  if (currentRemaining < n) {
+    throw new Error(`Only ${currentRemaining} remaining`);
+  }
+
+  user.remaining = (currentRemaining - n).toString();
+  await user.save();
+
+  const condition = IsAllowed(parseInt(user.remaining));
+
+  return {
+    success: true,
+    remaining: parseInt(user.remaining),
+    isAllowed: condition,
+  };
+};
+
+const IsAllowed = (remaining) => {
+  return remaining <= 0 ? false : true;
+};
+
+export { checkRemaining, atomicReserve };

@@ -54,3 +54,23 @@ export const getRemainingCredits = async ({ userId, n = 1 }) => {
     resetHours: RESET_HOURS,
   };
 };
+
+export const createUser = async ({ userId }) => {
+  const now = new Date();
+
+  const user = await User.create({
+    _id: userId,
+    remaining: "10",
+    lastReset: now.toISOString(),
+  });
+
+  return {
+    remaining: 10,
+    resetTimeRemaining: {
+      hours: 24,
+      minutes: 0,
+      seconds: 0,
+      totalMs: 24 * 60 * 60 * 1000,
+    },
+  };
+};
