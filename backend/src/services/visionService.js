@@ -7,7 +7,7 @@ export const generateImageDescription = async (imageBuffer) => {
   const base64Image = bufferToBase64(imageBuffer);
 
   const data = await generateWithOllama({
-    model: process.env.OLLAMA_MODEL || "moondream",
+    model: process.env.OLLAMA_MODEL || "moondream:1.8b",
     prompt: "Describe this image clearly and in detail.",
     images: [base64Image],
   });

@@ -13,6 +13,8 @@ export const selectedSettings = create((set) => ({
     imagePurpose: "All",
     background: "Solid white",
     color: "#00E5FF",
+    userId: null,
+    userRole: null,
   },
 
   setUserPref: (key, value) =>
@@ -33,6 +35,8 @@ export const selectedSettings = create((set) => ({
       imagePurpose: "All",
       background: "Solid white",
       color: "#00E5FF",
+      userId: null,
+      userRole: null,
     });
   },
 }));

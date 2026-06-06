@@ -27,7 +27,6 @@ const validateImageRequest = (body) => {
   return null;
 };
 
-// ===== transformers.js =====
 const normalizeGenerationPreferences = (preferences = {}) => ({
   noText: preferences.noText || false,
   whiteBackground: preferences.whiteBackground || false,
@@ -54,7 +53,6 @@ const prepareImageDocument = (data) => {
   };
 };
 
-// ===== responseHandlers.js =====
 const sendErrorResponse = (res, error, statusCode = 400) => {
   return res.status(statusCode).json({ error });
 };

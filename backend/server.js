@@ -14,6 +14,7 @@ import env from "./env.js";
 import { checkExternalServices } from "./healthcheck.js";
 import UploadImageDb from "./src/model/uploadModel.js";
 import saveImageModel from "./src/model/saveImageModel.js";
+import remainingRoute from "./src/routes/remaining.js";
 import {
   prepareImageDocument,
   sendErrorResponse,
@@ -53,28 +54,8 @@ app.use("/api/vision", visionRoute);
 app.use("/api/models", modelRoute);
 app.use("/api/prompt", buildRoute);
 
-app.post("/test", async (req, res) => {
-  console.log("Received data:", req);
-
-  // Validate request
-  const validationError = validateImageRequest(req.body);
-  if (validationError) {
-    return sendErrorResponse(
-      res,
-      validationError.error,
-      validationError.statusCode,
-    );
-  }
-
-  // Prepare document data
-  const imageDocumentData = prepareImageDocument(req.body);
-
-  // Create and save document
-  const savedImage = new saveImageModel(imageDocumentData);
-  await savedImage.save();
-
-  return sendSuccessResponse(res, savedImage);
-});
+// bago inin
+app.use("/api", remainingRoute);
 
 app.use("/api/generate", imageGenRoute);
 
