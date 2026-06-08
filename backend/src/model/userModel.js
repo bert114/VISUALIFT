@@ -6,6 +6,10 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
 
+    count: {
+      type: String,
+    },
+
     remaining: {
       type: String,
     },

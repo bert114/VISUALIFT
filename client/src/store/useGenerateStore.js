@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import sendToInfip from "../helper/infip.js";
 import useUIStore from "./useUIStore.js";
-import usePromptStore from "./usePromptStore.js";
+import usePromptStore, { selectedSettings } from "./usePromptStore.js";
 import { isAllowed } from "../helper/limit.js";
 
 const useGenerateStore = create((set) => ({
@@ -11,6 +11,7 @@ const useGenerateStore = create((set) => ({
   generate: async (payload) => {
     const { setLoading, showToast, setState, state } = useUIStore.getState();
     const { setStep } = usePromptStore.getState();
+    const { setUserPref } = selectedSettings.getState();
 
     if (!isAllowed()) {
       showToast(

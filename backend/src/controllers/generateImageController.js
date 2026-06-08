@@ -1,4 +1,5 @@
 import { errorResponse, successResponse } from "../helper/responseHelper.js";
+import { saveLogGeneration } from "../services/generation.js";
 import { atomicReserve } from "../services/rateLimit.js";
 import {
   getRemainingCredits,
@@ -10,6 +11,8 @@ const generateImageController = async (req, res) => {
     const data = req.body;
 
     const { n, size, prompt, userId } = data;
+
+    console.log("Received request to generate image with data:", data);
 
     const imageUrl =
       "https://res.cloudinary.com/dmincuczc/image/upload/v1777960306/uploads/file_ritt1j.jpg";
@@ -28,6 +31,13 @@ const generateImageController = async (req, res) => {
 
     const { remaining, isAllowed } = await atomicReserve({ userId });
 
+    const {} = await atomicOperation({ userId });
+
+    const rateLimitInfo = {
+      remaining,
+      isAllowed,
+    };
+
     console.log(isAllowed);
 
     await new Promise((resolve, reject) => {
@@ -36,7 +46,20 @@ const generateImageController = async (req, res) => {
       }, 2000);
     });
 
-    return successResponse(res, 200, { result, remaining, isAllowed });
+    const imageGenerationInfo = {
+      userId,
+      prompt,
+      result: "success",
+      timestamp: Date.now(),
+    };
+
+    const log = await saveLogGeneration({ userId, prompt, result });
+
+    return successResponse(res, 200, {
+      result,
+      rateLimitInfo,
+      log,
+    });
   } catch (error) {
     console.log(error);
     return errorResponse(
