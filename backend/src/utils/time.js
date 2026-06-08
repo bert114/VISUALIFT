@@ -121,6 +121,15 @@ export const updateUserResetDate = async (userId, resetDate) => {
   );
 };
 
+export function getResetTimeLeft() {
+  const now = new Date();
+
+  const nextMidnight = new Date(now);
+  nextMidnight.setHours(24, 0, 0, 0);
+
+  return Math.floor((nextMidnight - now) / 1000);
+}
+
 export {
   getCurrentTime,
   addHours,

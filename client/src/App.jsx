@@ -29,15 +29,10 @@ function App() {
   useEffect(() => {
     if (!user) return;
     const fetchData = async () => {
-      const token = await getToken();
-      const { id, role = "user" } = user;
-
-      const { remaining, resetTimeRemaining } = await getRemaining({
-        userId: id,
-      });
+      const { remaining } = await getRemaining({ userId: user.id });
 
       setUserPref("remaining", remaining);
-      setUserPref("userId", user.id);
+      //setUserPref("userId", user.id);
     };
 
     fetchData();

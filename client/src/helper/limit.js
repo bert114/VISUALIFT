@@ -2,11 +2,17 @@ import axios from "axios";
 import { selectedSettings } from "../store/usePromptStore.js";
 
 async function getRemaining({ userId }) {
-  const data = await axios.get(`http://localhost:5000/api/remaining/${userId}`);
+  try {
+    const data = await axios.get(
+      `http://localhost:5000/api/remaining/${userId}`,
+    );
 
-  const { remaining, resetTimeRemaining } = data.data;
+    const { remaining } = data.data;
 
-  return { remaining, resetTimeRemaining };
+    return { remaining };
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 export function isAllowed() {

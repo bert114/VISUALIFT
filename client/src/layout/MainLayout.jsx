@@ -32,7 +32,7 @@ function MainLayout() {
     <>
       <header>
         <h1 className="logo">VISUALIFT</h1>
-        <h2>{remaining}</h2>
+        <h2>Remaining Generation: {remaining}</h2>
         <Show when="signed-out">
           <SignInButton />
           <SignUpButton />
