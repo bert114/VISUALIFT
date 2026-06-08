@@ -21,6 +21,7 @@ import {
   sendSuccessResponse,
   validateImageRequest,
 } from "./src/helper/imageReq.js";
+import RateLimit from "./src/model/rateLimit.js";
 dotenv.config();
 
 const app = express();
@@ -65,3 +66,9 @@ app.use(notFoundMiddleware);
 app.listen(env.PORT, () => {
   console.log(`Server running on port ${env.PORT}`);
 });
+
+// await RateLimit.create({
+//   userId: "user_123",
+//   date: "2025-06-18",
+//   count: 5,
+// });
