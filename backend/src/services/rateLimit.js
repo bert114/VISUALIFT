@@ -1,3 +1,4 @@
+import RateLimit from "../model/rateLimit.js";
 import User from "../model/userModel.js";
 import throwError from "../utils/throwErrors.js";
 import { getUserById } from "../utils/user.js";
@@ -5,6 +6,8 @@ import { createUser } from "./userServices.js";
 
 async function checkRemaining({ userId }) {
   const today = null;
+
+  console.log(today);
 
   const user = await getUserById(userId);
 
@@ -117,5 +120,19 @@ const atomicReserve = async ({ userId, n = 1 }) => {
 const IsAllowed = (remaining) => {
   return remaining <= 0 ? false : true;
 };
+
+export async function getDailyCount({ user }) {
+  const now = new Date();
+  const lastUpdate = user.updatedAt;
+  const hoursSinceLastUpdate = (now - lastUpdate) / (1000 * 60 * 60);
+
+  if (hoursSinceLastUpdate >= 24) {
+    user.count = 0;
+    await user.save();
+    return 0;
+  }
+
+  return user.count || 0;
+}
 
 export { checkRemaining, atomicReserve };

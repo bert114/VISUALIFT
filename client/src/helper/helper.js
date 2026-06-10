@@ -35,7 +35,7 @@ export async function uploadImage(img) {
 }
 
 export function getUrl(img) {
-  const path = img.data.data.url;
+  const path = img.data.data.data.url;
 
   return path;
 }

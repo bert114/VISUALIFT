@@ -99,6 +99,9 @@ const useImageStore = create((set, get) => ({
         file: e.target.files[0],
       });
 
+      console.log(get().file);
+      console.log(data.data.data.data.url);
+
       await new Promise((resolve) => requestAnimationFrame(resolve));
       // await waitforElement('[data-image="preview"]');
 

@@ -1,6 +1,8 @@
 import RateLimit from "../model/rateLimit.js";
 
 export async function idempotency(req, res, next) {
+  console.log("dnudnudnudnudnudnudnudndundundundun");
+
   const key = req.headers["idempotency-key"];
 
   if (!key) {

@@ -1,4 +1,5 @@
 import RateLimit from "../model/rateLimit.js";
+import { getDailyCount } from "./rateLimit.js";
 
 export async function getUserValue({ userId, key = null }) {
   const user = await RateLimit.findOne({ userId });
@@ -9,7 +10,7 @@ export async function getUserValue({ userId, key = null }) {
     return 0;
   }
 
-  return user[key];
+  return getDailyCount({ user });
 }
 
 export async function createDefaultUser({ userId }) {
