@@ -1,4 +1,3 @@
-// backend/src/models/SavedImage.js
 import mongoose from "mongoose";
 
 const savedImageSchema = new mongoose.Schema({

@@ -50,13 +50,18 @@ export function useHistory() {
   };
 
   const deleteImage = async (imageId) => {
+    console.log(imageId);
     try {
-      const response = await fetch(`/api/images/${imageId}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `http://localhost:5000/api/images/${imageId}`,
+        {
+          method: "DELETE",
+        },
+      );
 
       if (response.ok) {
         setSavedImages((prev) => prev.filter((img) => img.id !== imageId));
+        await loadHistory();
         return true;
       }
       return false;

@@ -32,16 +32,17 @@ router.get("/history/:userId", async (req, res) => {
   }
 });
 
-router.delete("/api/images/:id", async (req, res) => {
-  const { userId } = req;
-  const { id } = req.params;
+router.delete("/images/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
 
-  await db.collection("savedimages").deleteOne({
-    _id: new ObjectId(id),
-    userId,
-  });
+    const result = await saveImages.findByIdAndDelete(id);
 
-  res.json({ success: true });
+    console.log(result);
+    res.json({ success: true });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 export default router;
