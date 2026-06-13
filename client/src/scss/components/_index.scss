@@ -1,4 +1,7 @@
+@forward "./header.scss";
+
 @forward "./stepper.scss";
+
 @forward "./upload.scss";
 @use "./Upload/" as *;
 @forward "./loaders.scss";
