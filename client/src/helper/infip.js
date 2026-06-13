@@ -7,6 +7,11 @@ const sendToInfip = async (obj) => {
     const res = await axios.post(
       "http://localhost:5000/api/generate/image",
       obj,
+      {
+        headers: {
+          "Idempotency-Key": crypto.randomUUID(),
+        },
+      },
     );
 
     console.log(res);

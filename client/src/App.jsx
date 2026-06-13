@@ -32,7 +32,7 @@ function App() {
       const { remaining } = await getRemaining({ userId: user.id });
 
       setUserPref("remaining", remaining);
-      //setUserPref("userId", user.id);
+      setUserPref("userId", user.id);
     };
 
     fetchData();

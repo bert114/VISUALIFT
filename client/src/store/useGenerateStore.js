@@ -4,6 +4,10 @@ import useUIStore from "./useUIStore.js";
 import usePromptStore, { selectedSettings } from "./usePromptStore.js";
 import { isAllowed } from "../helper/limit.js";
 
+function timeout(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 const useGenerateStore = create((set) => ({
   result: null,
   error: null,
