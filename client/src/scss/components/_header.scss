@@ -1,0 +1,119 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  background: var(--bg);
+  border-bottom: var(--border-subtle);
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-accent)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+header h2 {
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-muted);
+  margin: 0;
+  background: var(--bg-light);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: var(--border-subtle);
+}
+
+header > div:has(> :is(button, div)) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--bg-light);
+  padding: var(--space-1);
+  border-radius: var(--radius-pill);
+  border: var(--border-subtle);
+}
+
+header button {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: none;
+}
+
+header button:first-child {
+  background: var(--color-primary);
+  color: white;
+}
+
+header button:first-child:hover {
+  background: #0052cc;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-s);
+}
+
+header button:last-child {
+  background: transparent;
+  color: var(--color-text);
+  border: var(--border-subtle);
+}
+
+header button:last-child:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-active);
+  color: var(--color-accent);
+}
+
+header .sign-out-btn {
+  background: rgba(255, 68, 68, 0.15);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+header .sign-out-btn:hover {
+  background: rgba(255, 68, 68, 0.25);
+  border-color: #ff6b6b;
+  color: #ff8888;
+  transform: translateY(-1px);
+}
+
+header :is(.logo, h2) {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    font-size: var(--font-size-lg);
+  }
+
+  header h2 {
+    font-size: var(--font-size-sm);
+  }
+
+  header > div:has(> :is(button, div)) {
+    width: 100%;
+    justify-content: center;
+  }
+}
