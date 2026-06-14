@@ -25,6 +25,7 @@ header {
   margin: 0;
 }
 
+/* The Counter Token Pill */
 header h2 {
   font-family: var(--font-body);
   font-size: var(--font-size-md);
@@ -37,16 +38,45 @@ header h2 {
   border: var(--border-subtle);
 }
 
-header > div:has(> :is(button, div)) {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  background: var(--bg-light);
-  padding: var(--space-1);
-  border-radius: var(--radius-pill);
-  border: var(--border-subtle);
+/* Specific styling if you choose to show a promo state badge to logged out users */
+header h2.promo-badge {
+  color: var(--color-accent);
+  background: rgba(0, 200, 255, 0.05);
+  border-color: rgba(0, 200, 255, 0.2);
 }
 
+/* Unified Container for the Auth/Nav Controls */
+header .auth-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Internal navigation group for links and avatars */
+header .user-profile-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-right: var(--space-2);
+}
+
+/* FIX: High-Contrast Premium Style for the History Link */
+header .history-link {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted); /* Fallback clean gray */
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+header .history-link:hover {
+  color: var(
+    --color-text
+  ); /* Highlights clearly to sharp off-white/black on hover */
+}
+
+/* Clean Global Button Reset inside Header */
 header button {
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
@@ -58,6 +88,7 @@ header button {
   border: none;
 }
 
+/* Primary/Sign-In buttons */
 header button:first-child {
   background: var(--color-primary);
   color: white;
@@ -69,6 +100,7 @@ header button:first-child:hover {
   box-shadow: var(--shadow-s);
 }
 
+/* Secondary/Sign-Up buttons */
 header button:last-child {
   background: transparent;
   color: var(--color-text);
@@ -81,14 +113,15 @@ header button:last-child:hover {
   color: var(--color-accent);
 }
 
+/* Explicit Overrides for Destructive/Sign Out Actions */
 header .sign-out-btn {
-  background: rgba(255, 68, 68, 0.15);
+  background: rgba(255, 68, 68, 0.1);
   color: #ff6b6b;
-  border: 1px solid rgba(255, 68, 68, 0.3);
+  border: 1px solid rgba(255, 68, 68, 0.2);
 }
 
 header .sign-out-btn:hover {
-  background: rgba(255, 68, 68, 0.25);
+  background: rgba(255, 68, 68, 0.2);
   border-color: #ff6b6b;
   color: #ff8888;
   transform: translateY(-1px);
@@ -98,10 +131,12 @@ header :is(.logo, h2) {
   flex-shrink: 0;
 }
 
+/* Responsive Breakpoints */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
     text-align: center;
+    gap: var(--space-3);
   }
 
   .logo {
@@ -110,9 +145,11 @@ header :is(.logo, h2) {
 
   header h2 {
     font-size: var(--font-size-sm);
+    width: 100%;
+    text-align: center;
   }
 
-  header > div:has(> :is(button, div)) {
+  header .auth-container {
     width: 100%;
     justify-content: center;
   }

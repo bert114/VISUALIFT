@@ -20,6 +20,7 @@ import useImageStore from "../store/useImageStorecopy.js";
 import useUIStore from "../store/useUIStore.js";
 import AspectRatio from "./preference/AspectRatio.jsx";
 import SelectedSummary from "./preference/SelectedSummary.jsx";
+import { Show } from "@clerk/react";
 
 function GenerationPreferences() {
   const [optionalOpen, setOptionalOpen] = useState(false);
@@ -36,6 +37,8 @@ function GenerationPreferences() {
     aspectRatio,
     numberOfImages,
   } = selectedSettings();
+
+  const { remaining } = selectedSettings().userPref;
 
   const userPreference = useMemo(
     () => ({
@@ -102,15 +105,22 @@ function GenerationPreferences() {
         </div>
 
         <SelectedSummary />
+        <div className="box">
+          <Show when="signed-in">
+            <h4 className="support-heading">
+              Remaining Generation: {remaining}
+            </h4>
+          </Show>
 
-        <button
-          className="btn btn-primary"
-          onClick={handleGenerate}
-          data-testid="generate-btn"
-          disabled={state !== "complete"}
-        >
-          {loading && img ? "Analyzing..." : "Analyze image"}
-        </button>
+          <button
+            className="btn btn-primary"
+            onClick={handleGenerate}
+            data-testid="generate-btn"
+            disabled={state !== "complete"}
+          >
+            {loading && img ? "Analyzing..." : "Analyze image"}
+          </button>
+        </div>
       </div>
     </section>
   );

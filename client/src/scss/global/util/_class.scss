@@ -76,3 +76,14 @@
     0 16px 38px rgba(0, 102, 255, 0.46),
     0 0 34px rgba(0, 255, 255, 0.18);
 }
+
+.support-heading {
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-weight: 200;
+  font-size: 13px;
+}
+
+h4.support-heading {
+  margin-bottom: 0.5rem !important;
+}

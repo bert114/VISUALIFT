@@ -27,22 +27,25 @@ function MainLayout() {
     const { remaining } = userPref;
     console.log(remaining);
     setRemaining(remaining);
-  }, [userPref]); // Watch the entire userPref object
+  }, [userPref]);
 
   return (
     <>
       <header>
         <h1 className="logo">VISUALIFT</h1>
-        <h2>Remaining Generation: {remaining}</h2>
-        <div className="flex">
+
+        <div className="auth-container">
           <Show when="signed-out">
             <SignInButton />
             <SignUpButton />
           </Show>
           <Show when="signed-in">
-            <UserButton />
-            <SignOutButton />
-            <Link to="/history">History</Link>
+            <div className="user-profile-group">
+              <Link to="/history" className="history-link">
+                History
+              </Link>
+              <UserButton />
+            </div>
           </Show>
         </div>
       </header>

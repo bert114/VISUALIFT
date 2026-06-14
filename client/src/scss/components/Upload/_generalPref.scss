@@ -181,15 +181,16 @@
   }
 
   &__tag {
+    display: none;
     position: absolute;
     top: var(--space-2);
     right: 10px;
     padding: 3px 7px;
-    border-radius: var(--radius-pill);
-    font-size: var(--font-size-xs);
+    border-radius: 4px;
+    font-size: var(--font-size-xs1);
     font-weight: var(--font-heading);
-    color: var(--color-accent);
-    background: rgba(0, 255, 255, 0.12);
+    color: black;
+    background: var(--clr-badge);
     border: 1px solid rgba(0, 255, 255, 0.24);
   }
 }

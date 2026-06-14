@@ -5,6 +5,7 @@ import { usePreferenceActions } from "../../hooks/usePreferenceAction.jsx";
 import { selectedSettings } from "../../store/usePromptStore.js";
 import { getNumber } from "../../helper/helper.js";
 import useImageStore from "../../store/useImageStorecopy.js";
+import UseIcon from "../../hooks/useIcons.jsx";
 
 function StyleModel() {
   const action = usePreferenceActions();
@@ -31,7 +32,8 @@ function StyleModel() {
               className={`model-card ${isActive ? "model-card--active" : ""}`}
               aria-pressed={isActive}
             >
-              <span className="model-card__icon">{item.icon}</span>
+              {/* <span className="model-card__icon">{item.icon}</span> */}
+              <UseIcon icon={item.icon} size={30} />
 
               <span className="model-card__content">
                 <span className="model-card__title">{item.title}</span>
